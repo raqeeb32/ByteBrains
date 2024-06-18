@@ -23,7 +23,7 @@
           echo'<button class="h-btn btn"><a href="admin/index.php">My profile</a></button>';
         }
         else{
-          echo'<button class="h-btn btn"><a href="student/studentProfile.php">My profile</a></button>';
+          echo'<button class="h-btn btn"><a href="student/index.php">My profile</a></button>';
         }
       }
       else{
