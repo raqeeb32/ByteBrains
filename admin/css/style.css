@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root {
+    --primary-color: #3162DF;
+    --secondary-color: #0684DD;
+    --grayC: rgb(69, 60, 60);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Inter', 'Times New Roman';
+}
+
+a {
+    text-decoration: none;
+}
+#bodyLeft h3 i{
+   width:20%;
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 4.5rem;
+    background-color: black;
+    padding: 20px;
+    color: white;
+}
+
+#header a {
+    color: white;
+}
+
+#title, #logout {
+    padding: 10px;
+}
+
+#logo a {
+    font-family: 'Exo', 'Inter', 'sans-serif';
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+#bodyLeft {
+    padding: 1rem;
+    padding-left: 1.5rem;
+    width: 20%;
+    height: 100vh;
+    background-color: black;
+    float: left;
+    overflow-y: auto;
+}
+
+#bodyLeft h3 {
+    font-weight: 500;
+    font-size: 0.8rem;
+    line-height: 1.8rem;
+    color: black;
+    background-color: #fff;
+    margin: 10px auto;
+    padding-left:5%;
+    padding-top: auto;
+    border-radius: 7px;
+    text-align: center;
+}
+
+#bodyLeft ul li {
+    list-style: none;
+    padding: 4px;
+    transition: all 0.3s;
+}
+
+#bodyLeft ul li a {
+    
+    color: white;
+}
+
+#bodyLeft ul li:hover {
+   
+    background-color: rgb(111, 111, 122);
+    padding-left: 8%;
+}
+
+#bodyLeft ul li a:hover {
+    color: white;
+}
+
+#bodyLeft ul li a {
+    display: block;
+    font-weight: 200;
+    font-family: 'Inter', 'sans-serif';
+}
+
+#bodyRight {
+    margin-left: 20%;
+    padding: 0.5rem;
+    width: 80%;
+    height: 100vh;
+}
+
+#bodyRight h3 {
+    width: 100%;
+    text-align: center;
+}
+.cat_display_table{
+    margin:7px;
+    width: 100%;
+    padding:1rem;
+}
+thead{
+    height:2.5rem;
+    background-color: black;
+    color:white;
+}
+td{
+    padding:2%;
+    /* padding-left: 2.5%; */
+}
+/* vcat css */
+h3 {
+    background-color: black;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.add {
+    width: 60%;
+    margin: auto;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.add details summary {
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    height: 30px;
+    outline: none;
+}
+
+.add details form{
+    background-color: black;
+    padding: 1rem;
+}
+
+.add details form input {
+    width: 100%;
+    height: 30px;
+    padding: 1rem;
+    outline: none;
+}
+
+#addCatBtn {
+    background-color: #ABABAB;
+    padding: 0.3rem;
+    margin-top: 5px;
+    font-family: 'poppins', 'inter';
+    border-radius: 7px;
+    border:none;
+    font-weight: normal;
+    color: white;
+    cursor: pointer;
+}
+
+#addCatBtn:hover {
+    background-color: #3162DF;
+}
+.editCatForm{
+    width:60%;
+    margin: auto;
+    padding:5px;
+    border:1px solid black;
+    background-color: black;
+}
+.editCatForm input{
+    width:100%;
+    margin:auto;
+    outline: none;
+   
+    padding-bottom: 0.5rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+/* sub_cat css */
+.editsubCatForm{
+    width:60%;
+    margin: auto;
+    padding:5px;
+    border:1px solid black;
+    background-color: black;
+}
+.editsubCatForm input{
+    width:100%;
+    margin:auto;
+    outline: none;
+   
+    padding-bottom: 0.5rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+.editsubCatForm{
+    width:60%;
+    margin: auto;
+    padding:5px;
+    border:1px solid black;
+    background-color: black;
+}
+.editsubCatForm input{
+    width:100%;
+    margin:auto;
+    outline: none;
+   
+    padding-bottom: 0.5rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+select{
+    width: 100%;
+    height:30px;
+     padding:0.3rem;
+    outline: none;
+    margin-bottom: 3px;
+}
+/* lang css */
+#addlangBtn {
+    background-color: #ABABAB;
+    padding: 0.3rem;
+    margin-top: 5px;
+    font-family: 'poppins', 'inter';
+    border-radius: 7px;
+    font-weight: normal;
+    color: white;
+    cursor: pointer;
+}
+
+#addlangBtn:hover {
+    background-color: #3162DF;
+}
+.editLangForm{
+    width:60%;
+    margin: auto;
+    padding:5px;
+    border:1px solid black;
+    background-color: black;
+}
+.editLangForm input{
+    width:100%;
+    margin:auto;
+    outline: none;
+   
+    padding-bottom: 0.5rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+/* contact us page  */
+.con{
+    width:100%;
+  padding-left: 5%;
+    align-items: center;
+   
+}
+.con_table{
+    width:80%;
+    padding-left: 5%;
+    margin: auto;
+}
+.con_table input{
+width:100%;
+border-top:none ;
+}
+.con_table tr td{
+    width:50%;
+}
+.con_save{
+    width:10%;
+    padding:1px;
+    height:2rem;
+}
+.con_save:hover{
+    background-color: var(--primary-color);
+    color:white;
+}
+.textarea{
+    margin-top: 1rem;
+    width:100%;
+    min-height: 3rem;
+    max-width: 100%;
+}
+.add textarea{
+    padding: 2%;
+}
+.detail-container{
+    margin-top:1rem;
+}
+.about{
+    width:60%;
+    margin:auto;
+    padding: 5%;
+}
+
+.about textarea{
+    width:100%;
+    height:150px;
+    outline:none;
+    padding:5%;
+}
+.aboutBtn{
+    width:20%;
+    float: right;
+}
+.cardContainer{
+    margin-left:2%;
+    display: grid;
+    column-gap: 50px;
+    row-gap: 30px;
+    height:150px;
+    border-radius: 10px;
+    grid-template-columns: repeat(auto-fit,minmax(10rem,16rem));
+    justify-content: start;
+    /* color:white; */
+}
+.cardContainer a{
+    color:black;
+    font-size: larger; 
+    padding-left:7rem;
+    /* padding-top: 7rem; */
+}
+.C{
+    display:flex;
+    flex-direction: column;
+    background-color:rgb(255, 248, 248);
+    border-radius: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);  
+    text-align: center;
+}
+ .C:hover{
+    box-shadow: 1px 4px -5px var(--secondary-color); 
+  }

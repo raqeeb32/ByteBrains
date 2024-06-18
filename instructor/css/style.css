@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,300;1,600&display=swap');
+:root{
+    --primary-color: #3162DF;
+    --secondary-color: #0684DD;
+}
+*{
+    margin: 0px;
+    padding:0px;
+    box-sizing: border-box;
+
+}
+body{
+    font-family:"poppins","sans-serif","inter","exo";
+    overflow-x: hidden;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+}
+/* header  */
+ul {
+    list-style: none;
+}
+li{
+    font-size: 16px;
+    /* display:inline-block; */
+}
+header{
+    /* max-width: 1280px; */
+    width:100%;
+     height:4rem;
+    margin: 0 auto;
+    padding-right: 5px;
+    display: flex;
+    justify-content: space-between;   
+    align-items: center;
+    position:fixed;
+    padding-inline: 1rem;
+    background-color:rgb(121, 206, 235);
+    color: white;
+    font-weight: 600;
+}
+.logo{
+font-size: larger;
+}
+.logo a{
+    color: var(--primary-color);
+    font-weight: bolder;
+
+}
+a{
+    text-decoration: none;
+}
+header span{
+    cursor: pointer;
+}
+header span a{
+    color:white;
+    font-size: larger;
+    margin-right: 10px;
+}
+/* left */
+
+.left{
+    width:15%;
+    height:100vh;
+padding-top:4rem;
+background-color: #e1e0e0;
+float: left;
+
+}
+.left ul{
+    padding:10px;
+
+}
+.left ul li{
+    margin-top:1rem;
+}
+.left ul li:hover{
+    background-color:var(--secondary-color);
+  
+   
+}
+.left ul li a:hover{
+    color:white;
+    padding-left: 8%;
+    transition: 200ms;
+   
+}
+.left ul li i{
+    color:rgb(124, 101, 253);
+    padding-right: 7px;
+}
+/* right */
+.right{
+    padding-top: 6%;
+    width:85%;
+    margin-left: 15%;
+    height: 100vh;
+    background-color:white;
+    /* background-color: #a1a0a0; */
+}
+.right .card{
+    width:10%;
+    height:10%;
+    color:aqua;
+}
+.right h3{
+    text-align: center;
+    font-weight: 600;
+}
+.course_table{
+    width:90%;
+    margin-top:1.5rem;
+    text-align: center;
+    /* background-color: rgb(40, 5, 5); */
+}
+.course_table table{
+    width:100%;
+    /* background-color: rgb(237, 229, 229); */
+    align-items: center;
+}
+.course_table table th{
+    height:2.5rem;
+    background-color: rgb(237, 229, 229);
+}
+.course_table table tr td button{
+    width:30%;
+    height: 20%;
+}
+.addCbtn{
+    margin-top:25%;
+    margin-left: 80%;
+    position: fixed;
+    width:40px;
+    height:40px;
+    background-color: red;
+    color:white;
+    border-radius: 50px;
+    font-size: xx-large;
+    border: none;
+    cursor: pointer;
+}
+.addCbtn a{
+    color:white;
+}
+.addCourse{
+    width:40rem;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 2%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.addCourse form{
+    padding:1%;
+    background-color: #fff;
+    border-radius: 10px;
+    height:28rem;
+    width: 100%;
+}
+.row{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+}
+.row input{
+    height:2rem;
+}
+.row textarea{
+    height:4rem;
+}
+.btns{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+.btns button{
+width:5rem;
+height: 2rem;
+cursor: pointer;
+border:none;
+color: white;
+border-radius: 4px;
+}
+.btns a{color: white;}
+#addCourse{
+    background-color: var(--secondary-color);
+}
+#closebtn{
+    background-color: gray;
+}
+#addCourse:hover{
+   background-color: rgb(85, 227, 85);
+}
+#closebtn:hover{
+    background-color: rgb(222, 28, 28);
+}

@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,300;1,600&display=swap');
+:root{
+    --primary-color: #3162DF;
+    --secondary-color: #0684DD;
+}
+*{
+    margin: 0px;
+    padding:0px;
+    box-sizing: border-box;
+
+}
+body{
+    font-family:"poppins","sans-serif","inter","exo";
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+}
+a{
+    text-decoration: none;
+}
+header{
+    width:100vw;
+    display:flex;
+    justify-content: space-between;
+    padding:1.7%;
+    align-items: center;
+}
+.logo{
+    font-size: x-large;
+    font-weight: bold;
+}
+header a{
+font-size: larger;
+font-weight: 500;
+}
+.panel a{
+    font-size:larger;
+}
+/* left side  */
+.left{
+    width:15%;
+    height:100%;
+background-color: #f5f5f5;
+float: left;
+
+}
+.left ul{
+    padding:10px;
+
+}
+.left ul li{
+    margin-top:1rem;
+}
+.left ul li:hover{
+    background-color:var(--secondary-color);
+  
+   
+}
+.left ul li a:hover{
+    color:white;
+    padding-left: 8%;
+    transition: 200ms;
+   
+}
+.left ul li i{
+    color:rgb(124, 101, 253);
+    padding-right: 7px;
+}
