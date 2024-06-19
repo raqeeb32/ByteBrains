@@ -9,7 +9,6 @@
      <h3><i class="fa-regular fa-file"></i> Course management</h3>
     <ul>
         <li><a href="index.php?courses">Active courses</a></li>
-        <li><a href="">unpublished courses</a></li>
     </ul>
     <h3><i class="fa-solid fa-user"></i>User management</h3>
     <ul>
@@ -28,6 +27,7 @@
         <li><a href="index.php?contact">Contact us page</a></li>
         <li><a href="index.php?about">About us page</a></li>
         <li><a href="index.php?faqs">FAQs page</a></li>
+        <li><a href="index.php?feedbacks">FAQs page</a></li>
         <li><a href="">Edit slider</a></li>     
     </ul>
     
@@ -62,5 +62,8 @@
     }
     if(isset($_GET['courses'])){
         include("vCourses.php");
+    }
+    if(isset($_GET['feedbacks'])){
+        include("feedback.php");
     }
 ?>

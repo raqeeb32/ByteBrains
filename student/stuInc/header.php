@@ -28,7 +28,7 @@
 //     exit; // Exit to prevent further execution
 // }
 ?>
-
+<!-- <link rel="stylesheet" href="../css/style.css"> -->
 <header>
     <div class="logo"><a href="#">SkillyEarn</a></div>
     <div class="panel">Student pannel</div>
