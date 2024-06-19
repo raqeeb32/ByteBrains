@@ -1,8 +1,18 @@
+<?php
+ if(!isset($_SESSION)){
+    session_start();
+ }
+ ?>
 <link rel="stylesheet" href="../css/style2.css">
 <link rel="stylesheet" href="../css/style.css">
 <?php
 // include_once("header.php");
 // include_once("bodyLeft.php");
+if($_SESSION['adminLogin']){
+
+}else{
+    echo "<script>window.open('../index.php?instructors','_self')</script>";
+}
 include_once("db_con.php");
 
 if(isset($_GET['id'])){
@@ -39,8 +49,8 @@ if(isset($_GET['id'])){
             <div class="row">
                 <label>Profile photo</label>
                 <input type="file" name="inst_Img">
-                <?php if(isset($row['inst_img'])) { ?>
-                    <img src="<?php echo $row['photo']; ?>" alt="Instructor Image" style="max-width: 200px; max-height: 200px;">
+                <?php if(isset($row['photo'])) { ?>
+                    <img src="<?php echo $row['photo']; ?>" alt="Instructor Image" style="max-width: 150px; max-height: 150px;">
                 <?php } ?>
             </div>
             <div class="btns">
@@ -63,7 +73,7 @@ if (isset($_POST["editInstBtn"])) {
     if ($_FILES['inst_Img']['error'] == UPLOAD_ERR_OK) {
         // $stud_Img=''.$_FILES['stud_Img']['name'];
         $tmp_name = $_FILES["inst_Img"]["tmp_name"];
-        $inst_Img = '../images/instructorIMG/'. $_FILES["inst_Img"]["name"]; // Define the image path
+        $inst_Img = 'instIMG/'. $_FILES["inst_Img"]["name"]; // Define the image path
         move_uploaded_file($tmp_name, $inst_Img); // Move the uploaded file to the specified path
     } else {
         // No new image selected, retain the existing one

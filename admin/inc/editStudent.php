@@ -63,7 +63,7 @@ if (isset($_POST["editStudBtn"])) {
     if ($_FILES['stud_Img']['error'] == UPLOAD_ERR_OK) {
         // $stud_Img=''.$_FILES['stud_Img']['name'];
         $tmp_name = $_FILES["stud_Img"]["tmp_name"];
-        $stud_Img = '../student\images\profileImg/'. $_FILES["stud_Img"]["name"]; // Define the image path
+        $stud_Img = 'stdIMG/'.$_FILES["stud_Img"]["name"]; // Define the image path
         move_uploaded_file($tmp_name, $stud_Img); // Move the uploaded file to the specified path
     } else {
         // No new image selected, retain the existing one
