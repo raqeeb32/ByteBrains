@@ -27,7 +27,7 @@
         <li><a href="index.php?contact">Contact us page</a></li>
         <li><a href="index.php?about">About us page</a></li>
         <li><a href="index.php?faqs">FAQs page</a></li>
-        <li><a href="index.php?feedbacks">FAQs page</a></li>
+        <li><a href="index.php?feedbacks">feedback page</a></li>
         <li><a href="">Edit slider</a></li>     
     </ul>
     

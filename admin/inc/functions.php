@@ -224,40 +224,6 @@ function view_sub_categories()
     }
 }
 
-// function view_sub_categories() {
-//     include ("inc/db_con.php");
-//     $get_cat = $conn->prepare("SELECT * FROM subcategory");
-//     $get_cat->setFetchMode(PDO::FETCH_ASSOC);
-//     $get_cat->execute();
-//     $i = 1;
-//     while ($row = $get_cat->fetch()) {
-//         $id = $row['category_ID'];
-//         $get_c = $conn->prepare("SELECT * FROM categories WHERE category_ID=?");
-//         $get_c->execute([$id]);
-//         $row_cat = $get_c->fetch(PDO::FETCH_ASSOC); // Fetch as associative array
-//         if ($row_cat) {
-//             echo "<tr>
-//                 <td>" . $i++ . "</td>
-//                 <td>" . $row['subcategory_name'] . "</td>
-//                 <td>" . $row_cat['categoryName'] . "</td>
-//                 <td><a href='index.php?sub_cat&edit_sub_cat=" . $row['subcategory_ID'] . "' title='Edit'><i class='fa-solid fa-pen-to-square'></i></a>
-//                     <a style='color:red' href='index.php?sub_cat&del_sub_cat=".$row['subcategory_ID']."' title='Delete'><i class='fa-solid fa-trash'></i></a></td>
-//              </tr>";
-//         }
-//     }
-//     if(isset($_GET['del_sub_cat'])){
-//         $id = $_GET['del_sub_cat'];
-//         $del = $conn->prepare("DELETE FROM subcategory WHERE subcategory_ID=?");
-//         $success = $del->execute([$id]); // Check if execution was successful
-//         if ($success) {
-//             echo "<script>alert('Sub category deleted successfully');</script>";
-//         } else {
-//             echo "<script>alert('Sub category could not be deleted');</script>";
-//         }
-//         echo "<script>window.open('index.php?sub_cat','_self')</script>";
-//     }
-// }
-
 function add_sub_category()
 {
     //     error_reporting(E_ALL);
