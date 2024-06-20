@@ -11,143 +11,41 @@
     </div>
 
     <div class="Pcourses-container">
-        <div class="course">
+        <?php 
+            include("db_con.php");
+            $get_course=$conn->prepare("SELECT * FROM course");
+            // $get_course->setFetchMode(PDO::FETCH_ASSOC);
+            $get_course->execute();
+            if($get_course->rowCount()> 0){
+                while($row=$get_course->fetch(PDO::FETCH_ASSOC)){
+                    $course_id=$row["course_id"];
+                    echo'
+                          <div class="course">
             <div class="courseImg">
-                <img class="cImg" src="images/course1.png" alt="course">
+                <img class="cImg" src="instructor/'.$row["course_img"].'" alt="course">
             </div>
             <div class="courseDesc">
                 <div class="aboutCourse">
                     <p>by Matheen</p>
-                    <h4>Create a website with wordpress</h4>
+                    <h4>'.$row["course_name"].'</h4>
                 </div>
                 <div class="courseDuration">
-                    <img src="images/c-duraction.svg" alt=""> <span> 4 weeks</span>
+                    <img src="images/c-duraction.svg" alt=""> <span>'.$row["course_duration"].'</span>
                     <img src="images/students.svg" alt=""> <span>30 Students</span>
                 </div>
                 <!-- <hr/> -->
                 <div class="coursePrice">
                     <div class="price">
-                        <span>$29.9</span>
-                        <span>Free</span>
+                        <span> ₹ <del>'.$row["course_org_price"].'</del></span>
+                        <span>₹'.$row["course_price"].'</span>
                     </div>
-                    <a href="#">view more</a>
+                    <a href="#" class="view_more">view more</a>
                 </div>
             </div>
-        </div>
-        <div class="course">
-            <div class="courseImg">
-                <img class="cImg" src="images/course1.png" alt="course">
-            </div>
-            <div class="courseDesc">
-                <div class="aboutCourse">
-                    <p>by Matheen</p>
-                    <h4>Learn Html</h4>
-                </div>
-                <div class="courseDuration">
-                    <img src="images/c-duraction.svg" alt=""> <span> 4 weeks</span>
-                    <img src="images/students.svg" alt=""> <span>30 Students</span>
-                </div>
-                <!-- <hr/> -->
-                <div class="coursePrice">
-                    <div class="price">
-                        <span>$29.9</span>
-                        <span>Free</span>
-                    </div>
-                    <a href="#">view more</a>
-                </div>
-            </div>
-        </div>
-        <div class="course">
-            <div class="courseImg">
-                <img class="cImg" src="images/course1.png" alt="course">
-            </div>
-            <div class="courseDesc">
-                <div class="aboutCourse">
-                    <p>by Matheen</p>
-                    <h4>Create a website with wordpress</h4>
-                </div>
-                <div class="courseDuration">
-                    <img src="images/c-duraction.svg" alt=""> <span> 4 weeks</span>
-                    <img src="images/students.svg" alt=""> <span>30 Students</span>
-                </div>
-                <!-- <hr/> -->
-                <div class="coursePrice">
-                    <div class="price">
-                        <span>$29.9</span>
-                        <span>Free</span>
-                    </div>
-                    <a href="#">view more</a>
-                </div>
-            </div>
-        </div>
-        <div class="course">
-            <div class="courseImg">
-                <img class="cImg" src="images/course1.png" alt="course">
-            </div>
-            <div class="courseDesc">
-                <div class="aboutCourse">
-                    <p>by Matheen</p>
-                    <h4>Create a website with wordpress</h4>
-                </div>
-                <div class="courseDuration">
-                    <img src="images/c-duraction.svg" alt=""> <span> 4 weeks</span>
-                    <img src="images/students.svg" alt=""> <span>30 Students</span>
-                </div>
-                <!-- <hr/> -->
-                <div class="coursePrice">
-                    <div class="price">
-                        <span>$29.9</span>
-                        <span>Free</span>
-                    </div>
-                    <a href="#">view more</a>
-                </div>
-            </div>
-        </div>
-        <div class="course">
-            <div class="courseImg">
-                <img class="cImg" src="images/course1.png" alt="course">
-            </div>
-            <div class="courseDesc">
-                <div class="aboutCourse">
-                    <p>by Matheen</p>
-                    <h4>Create a website with wordpress</h4>
-                </div>
-                <div class="courseDuration">
-                    <img src="images/c-duraction.svg" alt=""> <span> 4 weeks</span>
-                    <img src="images/students.svg" alt=""> <span>30 Students</span>
-                </div>
-                <!-- <hr/> -->
-                <div class="coursePrice">
-                    <div class="price">
-                        <span>$29.9</span>
-                        <span>Free</span>
-                    </div>
-                    <a href="#">view more</a>
-                </div>
-            </div>
-        </div>
-        <div class="course">
-            <div class="courseImg">
-                <img class="cImg" src="images/course1.png" alt="course">
-            </div>
-            <div class="courseDesc">
-                <div class="aboutCourse">
-                    <p>by Matheen</p>
-                    <h4>Create a website with wordpress</h4>
-                </div>
-                <div class="courseDuration">
-                    <img src="images/c-duraction.svg" alt=""> <span> 4 weeks</span>
-                    <img src="images/students.svg" alt=""> <span>30 Students</span>
-                </div>
-                <!-- <hr/> -->
-                <div class="coursePrice">
-                    <div class="price">
-                        <span>$29.9</span>
-                        <span>Free</span>
-                    </div>
-                    <a href="#">view more</a>
-                </div>
-            </div>
-        </div>
+        </div>                                     
+                    ';
+                }
+            }
+        ?>
     </div>
 </section>

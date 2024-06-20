@@ -130,7 +130,7 @@ float: left;
     height: 20%;
 }
 .addCbtn{
-    margin-top:25%;
+    margin-top:15rem;
     margin-left: 80%;
     position: fixed;
     width:40px;
@@ -188,7 +188,7 @@ border-radius: 4px;
 }
 .btns a{color: white;}
 #addCourse{
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
 }
 #closebtn{
     background-color: gray;

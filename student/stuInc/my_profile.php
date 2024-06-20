@@ -51,6 +51,10 @@ if(isset($_SESSION['stuLogin']) && isset($_SESSION["email"])) {
                     <img src="<?php echo '../admin/inc/'.$details['stu_img']; ?>" alt="student Image" style="max-width: 200px; max-height: 200px;">
                 <?php } ?> -->
             </div>
+            <div class="row">
+                <label>Student Name</label> <br/>
+                <input type="text" name="stud_occ" value="<?php echo isset($details['stu_occ']) ? $details['stu_occ'] : ''; ?>">
+            </div>
             <div class="btns">
                 <button type="submit" name="updateStuBtn" id="updateStudent">Update</button>
             </div>
@@ -66,6 +70,7 @@ if(isset($_POST['updateStuBtn'])) {
     if(isset($_POST['stud_pass']) && !empty($_POST['stud_pass'])) {
         $id = $_POST['stud_id'];
         $stud_pass = $_POST['stud_pass'];
+        $stud_occ = $_POST['stud_occ'];
         $stud_Img = $details['stu_img']; // Default to current image path
         
         // Handle file upload if a new image is selected
@@ -76,8 +81,8 @@ if(isset($_POST['updateStuBtn'])) {
         }
         
         // Update student details including the image URL
-        $upCourse = $conn->prepare("UPDATE student SET stu_pass=?, stu_img=? WHERE stu_id=? ");
-        if ($upCourse->execute([$stud_pass, $stud_Img, $id])) {
+        $upCourse = $conn->prepare("UPDATE student SET stu_pass=?, stu_img=?,stu_occ=? WHERE stu_id=? ");
+        if ($upCourse->execute([$stud_pass, $stud_Img,$stud_occ, $id])) {
             echo "<script>alert('Student updated successfully');</script>";
         } else {
             echo "<script>alert('Student could not be updated');</script>";

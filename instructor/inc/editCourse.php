@@ -65,16 +65,18 @@ if (isset($_POST["editCoursebtn"])) {
     if ($_FILES['course_Img']['error'] == UPLOAD_ERR_OK) {
         $tmp_name = $_FILES["course_Img"]["tmp_name"];
         $course_img = '../images/courseimg/'. $_FILES["course_Img"]["name"]; // Define the image path
+       $img_select='images/courseimg/'. $_FILES["course_Img"]["name"];
         move_uploaded_file($tmp_name, $course_img); // Move the uploaded file to the specified path
     } else {
         // No new image selected, retain the existing one
         $course_img = $row['course_img'];
+        $img_select=$row['course_img'];
     }
     
     
     // Update course details including the image URL
     $upCourse = $conn->prepare("UPDATE course SET course_name=?, course_desc=?, course_duration=?, course_org_price=?, course_price=?, course_img=? WHERE course_id=? ");
-    if ($upCourse->execute([$course_name,$course_desc,$course_duration,$course_OP,$course_SP,$course_img, $id])) {
+    if ($upCourse->execute([$course_name,$course_desc,$course_duration,$course_OP,$course_SP,$img_select, $id])) {
         echo "<script>alert('Course updated successfully');</script>";
     } else {
         echo "<script>alert('Course could not be updated');</script>";

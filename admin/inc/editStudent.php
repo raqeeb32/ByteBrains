@@ -45,6 +45,10 @@ if(isset($_GET['id'])){
                     <img src="<?php echo $row['stu_img']; ?>" alt="student Image" style="max-width: 200px; max-height: 200px;">
                 <?php } ?>
             </div>
+            <div class="row">
+                <label>Occupation</label>
+                <input type="text" name="stud_occ" value="<?php echo $row['stu_occ']; ?>">
+            </div>
             <div class="btns">
                 <button name="editStudBtn" id="addCourse">Update</button>
                 <button id="closebtn"><a href="../index.php?students">Close</a></button>
@@ -59,6 +63,7 @@ if (isset($_POST["editStudBtn"])) {
     $stud_email = $_POST["stud_email"];
     $stud_pass = $_POST["stud_pass"];
     $stud_Img=$_POST["stud_Img"];
+    $stud_occ=$_POST["stud_occ"];
     // Handle file upload if a new image is selected
     if ($_FILES['stud_Img']['error'] == UPLOAD_ERR_OK) {
         // $stud_Img=''.$_FILES['stud_Img']['name'];
@@ -71,8 +76,8 @@ if (isset($_POST["editStudBtn"])) {
     }
     
     // Update student details including the image URL
-    $upCourse = $conn->prepare("UPDATE student SET stu_name=?, stu_email=?, stu_pass=?, stu_img=? WHERE stu_id=? ");
-    if ($upCourse->execute([$stud_name, $stud_email, $stud_pass, $stud_Img, $id])) {
+    $upCourse = $conn->prepare("UPDATE student SET stu_name=?, stu_email=?, stu_pass=?, stu_img=?,stu_occ=? WHERE stu_id=? ");
+    if ($upCourse->execute([$stud_name, $stud_email, $stud_pass, $stud_Img, $stud_occ, $id])) {
         echo "<script>alert('Student updated successfully');</script>";
     } else {
         echo "<script>alert('Student could not be updated');</script>";

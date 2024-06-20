@@ -5,21 +5,22 @@ if(!isset($_SESSION)){
  if(isset($_SESSION["adminLogin"])){
 include("db_con.php");
 if(isset($_POST['addStuBtn'])){
-    if($_POST['stud_name']!= '' || $_POST['stud_email']!= '' || $_POST['stud_pass']!= '' || $_POST['stud_Img']!= ''){
+    if($_POST['stud_name']!= '' || $_POST['stud_email']!= '' || $_POST['stud_pass']!= '' || $_POST['stud_Img']!= '' || $_POST['stud_occ']!= ''){
         $stud_name=$_POST['stud_name'];
         $stud_email=$_POST['stud_email'];
         $stud_pass=$_POST['stud_pass'];
-
+        $stud_occ=$_POST['stud_occ'];
         $stud_Img=$_FILES['stud_Img']['name'];//getting image
         $stud_Img_temp=$_FILES['stud_Img']['tmp_name'];//storing in temp var
         $img_folder = 'stdIMG/'.$stud_Img; //folder to store
         move_uploaded_file($stud_Img_temp,$img_folder);//storing into the folder
 
-        $sql = $conn->prepare('INSERT INTO student (stu_name,stu_email,stu_pass,stu_img) VALUES (:stud_name, :stud_email,:stud_pass,:img_folder);');
+        $sql = $conn->prepare('INSERT INTO student (stu_name,stu_email,stu_pass,stu_img,stu_occ) VALUES (:stud_name, :stud_email,:stud_pass,:img_folder,:stud_occ);');
         $sql->bindParam(':stud_name', $stud_name);
         $sql->bindParam(':stud_email', $stud_email);
         $sql->bindParam(':stud_pass', $stud_pass);
         $sql->bindParam(':img_folder', $img_folder);
+        $sql->bindParam(':stud_occ', $stud_occ);
         
         $result = $sql->execute();
         if ($result) {
@@ -94,6 +95,10 @@ if(isset($_POST['addStuBtn'])){
             <div class="row">
                 <label>Profile photo</label>
                 <input type="file" name="stud_Img">
+            </div>
+            <div class="row">
+                <label>Occupation</label>
+                <input type="text" name="stud_occ">
             </div>
             <div class="btns">
                 <button name="addStuBtn" id="addCourse">Add</button>
