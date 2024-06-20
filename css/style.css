@@ -24,7 +24,9 @@ body{
     overflow: hidden;
 } */
 
-
+h2{
+    font-family: 'exo','poppins','inter','arial';
+}
 
 p{
     font-family:'roboto','sans-serif';
@@ -46,7 +48,7 @@ li{
 header{
     /* max-width: 1280px; */
     width:100vw;
-    margin: 0 auto;
+    margin: 3 auto;
     display: flex;
     justify-content: space-between;   
     align-items: center;
@@ -190,7 +192,7 @@ p{
     display: grid;
     column-gap: 50px;
     row-gap: 30px;
-    grid-template-columns: repeat(auto-fit,minmax(170px,180px));
+    grid-template-columns: repeat(auto-fit,minmax(170px,190px));
   
 }
 .card{
@@ -198,7 +200,8 @@ p{
     flex-direction: column;
     align-items:center;
     margin-top: 20px;
-    padding-bottom: 70px;
+    min-height:190px; 
+    justify-content: center;
     /* width: 180px;
     height:180px; */
     background-color:white;
@@ -206,9 +209,8 @@ p{
     /* box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
-.card-icons{
-   margin-top: 50px;
-   margin-bottom: 10px;
+.card i{
+    color: var(--primary-color);
 }
 section{
     margin-left:50px;
@@ -391,3 +393,25 @@ gap:5%;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 }
+.feeds_container{
+    margin-top: 3%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,250px));
+    height:200px;
+    justify-content: start;
+    gap: 3%;
+}
+.feed{
+    display: flex;
+    flex-direction: column;
+    /* border:1px solid gray; */
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+    padding: 10%;
+    gap:10px;
+    border-radius: 5%;
+    
+}
+.feed_content{
+font-weight: lighter;
+}
+ 

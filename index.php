@@ -20,6 +20,7 @@
         include("inc/slider.php");
         include("inc/home_cat.php");
         include("inc/top_courses.php");
+        include("inc/feedbacks.php");
         include("inc/faqs.php");
         include("inc/footer.php");
    ?> 

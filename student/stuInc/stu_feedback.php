@@ -27,7 +27,7 @@ if (isset($_SESSION['stuLogin']) && isset($_SESSION["email"])) {
                     <textarea name="feedback"></textarea>
                 </div>
                 <div class="btns">
-                    <button type="submit" name="updateFeedback" id="updateFeedback">Update</button>
+                    <button type="submit" name="updateFeedback" id="updateFeedback">Submit</button>
                 </div>
             </form>
         </div>
@@ -35,24 +35,32 @@ if (isset($_SESSION['stuLogin']) && isset($_SESSION["email"])) {
     }
 
     // Process form submission on update button click
-    if (isset($_POST['updateFeedback']) && isset($_POST['$feedback'])!="") {
+    if (isset($_POST['updateFeedback'])) {
         $id = $_POST['stu_id'];
-        $feedback = $_POST['feedback'];
+        $feedback = htmlspecialchars($_POST['feedback']); // Sanitize input
 
         // Prepare and execute SQL query to update feedback
-        $up_feedback = $conn->prepare('INSERT INTO  feedback(f_content,stu_id) VALUES(:feedback,:id); ');
+        $up_feedback = $conn->prepare('INSERT INTO feedback(f_content, stu_id) VALUES(:feedback, :id)');
         $up_feedback->bindParam(':feedback', $feedback, PDO::PARAM_STR);
         $up_feedback->bindParam(':id', $id, PDO::PARAM_INT);
 
         if ($up_feedback->execute()) {
-            echo '<script>alert("Feedback saved!");</script>';
-            echo '<script>window.open("index.php?feedback","_self");</script>';
+            // Redirect upon successful submission
+            echo '<script>alert("Feedback  saved.");</script>';
+
+            header("Location: index.php?feedback");
+            exit();
         } else {
-            echo '<script>alert("Feedback not saved: ' . $up_feedback->errorInfo()[2] . '");</script>';
-            echo '<script>window.open("index.php?feedback","_self");</script>';
+            // Handle errors
+            $error_message = "Feedback not saved: " . $up_feedback->errorInfo()[2];
+            // Log the error instead of showing to the user
+            error_log($error_message);
+            echo '<script>alert("Feedback not saved. Please try again later.");</script>';
         }
     }
 } else {
-    echo '<script>window.open("index.php?feedback","_self");</script>';
+    // Redirect if session variables are not set
+    header("Location: index.php?feedback");
+    exit();
 }
 ?>

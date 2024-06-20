@@ -13,7 +13,7 @@
     <div class="Pcourses-container">
         <?php 
             include("db_con.php");
-            $get_course=$conn->prepare("SELECT * FROM course");
+            $get_course=$conn->prepare("SELECT * FROM course LIMIT 10");
             // $get_course->setFetchMode(PDO::FETCH_ASSOC);
             $get_course->execute();
             if($get_course->rowCount()> 0){
@@ -39,7 +39,7 @@
                         <span> ₹ <del>'.$row["course_org_price"].'</del></span>
                         <span>₹'.$row["course_price"].'</span>
                     </div>
-                    <a href="#" class="view_more">view more</a>
+                    <a href="./course_detail.php?course_id='.$row["course_id"].'" class="view_more">view more</a>
                 </div>
             </div>
         </div>                                     
