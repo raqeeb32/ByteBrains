@@ -13,7 +13,7 @@
     <div class="Pcourses-container">
         <?php 
             include("db_con.php");
-            $get_course=$conn->prepare("SELECT * FROM course LIMIT 10");
+            $get_course=$conn->prepare("SELECT * FROM course LIMIT 6");
             // $get_course->setFetchMode(PDO::FETCH_ASSOC);
             $get_course->execute();
             if($get_course->rowCount()> 0){
