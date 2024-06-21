@@ -159,7 +159,6 @@ float: left;
     padding:1%;
     background-color: #fff;
     border-radius: 10px;
-    height:28rem;
     width: 100%;
 }
 .row{
@@ -174,6 +173,7 @@ float: left;
     height:4rem;
 }
 .btns{
+    margin-top: 5%;
     display: flex;
     gap: 1rem;
     justify-content: center;

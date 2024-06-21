@@ -58,8 +58,8 @@ if(isset($_POST['addcoursebtn'])){
 ?>
 <div class="right">
     <div class="addCourse">
-    <h3>Add new course</h3>
-    <form action="#" method="post" enctype="multipart/form-data">
+        <h3>Add new course</h3>
+        <form action="#" method="post" enctype="multipart/form-data">
             <div class="row">
                 <label for="courseName">Course Name</label>
                 <input type="text" name="course_name">
@@ -85,6 +85,23 @@ if(isset($_POST['addcoursebtn'])){
             <div class="row">
                 <label>Course image</label>
                 <input type="file" name="course_Img">
+            </div>
+            <div class="row">
+                <label>Language</label>
+                <input type="text" name="course_duration">
+            </div>
+            <div class="row">
+                <label>what will they learn</label>
+               <div class="mult">
+               <input type="text" name="what_will_you_learn"> <button>+</button>
+               </div> 
+            </div>
+            <div class="row">
+                <label>Requirements</label>
+                <div class="mult">
+                <input type="text" name="requirements"> <button>+</button>
+                </div>
+                
             </div>
             <div class="btns">
                 <button name="addcoursebtn" id="addCourse">Add</button>
