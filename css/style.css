@@ -192,7 +192,7 @@ p{
     display: grid;
     column-gap: 50px;
     row-gap: 30px;
-    grid-template-columns: repeat(auto-fit,minmax(170px,190px));
+    grid-template-columns: repeat(auto-fit,minmax(150px,180px));
   
 }
 .card{
@@ -200,7 +200,7 @@ p{
     flex-direction: column;
     align-items:center;
     margin-top: 20px;
-    min-height:190px; 
+    min-height:180px; 
     justify-content: center;
     /* width: 180px;
     height:180px; */
@@ -250,6 +250,7 @@ gap:5%;
 /* max-height:20.18rem; */
     min-height:20.18rem;
     background-color:white;
+    border-radius: 1.5rem;
 /* border:1px solid rgb(203, 23, 23);  */
 }
 .cImg{
@@ -260,7 +261,8 @@ gap:5%;
     max-width: 20.63rem;
     min-height:15.18rem;
     max-height:15.18rem;
-    border-top-left-radius: 2.5rem;
+    border-top-left-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
     /* border: 2px solid blue; */
 }
 /*.aboutCourse{

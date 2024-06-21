@@ -52,7 +52,7 @@ if(isset($_SESSION['stuLogin']) && isset($_SESSION["email"])) {
                 <?php } ?> -->
             </div>
             <div class="row">
-                <label>Student Name</label> <br/>
+                <label>Occupation</label> <br/>
                 <input type="text" name="stud_occ" value="<?php echo isset($details['stu_occ']) ? $details['stu_occ'] : ''; ?>">
             </div>
             <div class="btns">

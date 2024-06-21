@@ -17,7 +17,7 @@ if(isset($_POST['addcoursebtn'])){
         $sql = $conn->prepare('INSERT INTO course (course_name, course_desc, course_img, course_duration, course_price, course_org_price) VALUES (:course_name, :course_desc,:img_select, :course_duration, :course_SP, :course_OP);');
         $sql->bindParam(':course_name', $course_name);
         $sql->bindParam(':course_desc', $course_desc);
-        $sql->bindParam(':img_select', $img_folder); 
+        $sql->bindParam(':img_select', $img_select); 
         $sql->bindParam(':course_duration', $course_duration);
         $sql->bindParam(':course_SP', $course_SP);
         $sql->bindParam(':course_OP', $course_OP);
