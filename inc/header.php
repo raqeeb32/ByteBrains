@@ -13,8 +13,8 @@
 
     <nav>
       <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li id="menu"><a href="#">Courses</a>
+        <li><a href="./index.php">Home</a></li>
+        <li id="menu"><a href="./courses.php">Courses</a>
      <?php include("inc/courses_cat.php");?>
         </li>
         <li>   
