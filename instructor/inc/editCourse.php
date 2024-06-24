@@ -1,10 +1,8 @@
 <link rel="stylesheet" href="../css/style.css">
 <?php
-// include_once("header.php");
-// include_once("left.php");
 include_once("db_con.php");
 
-if(isset($_GET['id'])){
+if(isset($_GET['id'])) {
     $id = $_GET['id'];
     $get_course = $conn->prepare("SELECT * FROM course WHERE course_id=?");
     $get_course->execute([$id]);
@@ -19,7 +17,20 @@ if(isset($_GET['id'])){
                 <label for="courseName">Course Name</label>
                 <input type="text" name="course_name" value="<?php echo $row['course_name']; ?>" required>
             </div>
-
+            <div class="row">
+                <label>Category</label>
+                <select name="category_id" required>
+                    <?php
+                    $get_categories = $conn->prepare("SELECT * FROM categories");
+                    $get_categories->setFetchMode(PDO::FETCH_ASSOC);
+                    $get_categories->execute();
+                    while ($cat_row = $get_categories->fetch()) {
+                        $selected = ($cat_row['category_ID'] == $row['category_ID']) ? 'selected' : '';
+                        echo "<option value='" . $cat_row['category_ID'] . "' $selected>" . $cat_row['categoryName'] . "</option>";
+                    }
+                    ?>
+                </select>
+            </div>
             <div class="row">
                 <label>Course Description</label>
                 <textarea name="course_desc" required><?php echo $row['course_desc']; ?></textarea>
@@ -28,7 +39,6 @@ if(isset($_GET['id'])){
                 <label>Course Duration</label>
                 <input type="text" name="course_duration" value="<?php echo $row['course_duration']; ?>" required>
             </div>
-
             <div class="row">
                 <label>Course original price</label>
                 <input type="number" name="course_OP" value="<?php echo $row['course_org_price']; ?>" required>
@@ -46,14 +56,24 @@ if(isset($_GET['id'])){
             </div>
             <div class="row">
                 <label>Language</label>
-                <input type="text" name="course_language" value="<?php echo $row['language']; ?>" required>
+                <select name="course_language" required>
+                    <?php
+                    $get_languages = $conn->prepare("SELECT * FROM lang");
+                    $get_languages->setFetchMode(PDO::FETCH_ASSOC);
+                    $get_languages->execute();
+                    while ($lang_row = $get_languages->fetch()) {
+                        $selected = ($lang_row['lang_name'] == $row['language']) ? 'selected' : '';
+                        echo "<option value='" . $lang_row['lang_name'] . "' $selected>" . $lang_row['lang_name'] . "</option>";
+                    }
+                    ?>
+                </select>
             </div>
             <div class="row">
                 <label>What will they learn</label>
                 <textarea name="what_will_you_learn" required><?php echo $row['what_will_you_learn']; ?></textarea>
             </div>
             <div class="row">
-                <label>Requirements</label>             
+                <label>Requirements</label>
                 <textarea name="requirements" required><?php echo $row['requirements']; ?></textarea>
             </div>
             <div class="btns">
@@ -67,6 +87,7 @@ if(isset($_GET['id'])){
 <?php
 if (isset($_POST["editCoursebtn"])) {
     $course_name = $_POST["course_name"];
+    $category_id = $_POST['category_id'];
     $course_desc = $_POST["course_desc"];
     $course_duration = $_POST["course_duration"];
     $course_OP = $_POST["course_OP"];
@@ -87,8 +108,8 @@ if (isset($_POST["editCoursebtn"])) {
     }
     
     // Update course details including the image URL
-    $upCourse = $conn->prepare("UPDATE course SET course_name=?, course_desc=?, course_duration=?, course_org_price=?, course_price=?, course_img=?, language=?, what_will_you_learn=?, requirements=? WHERE course_id=? ");
-    if ($upCourse->execute([$course_name, $course_desc, $course_duration, $course_OP, $course_SP, $img_select, $language, $what_will_you_learn, $requirements, $id])) {
+    $upCourse = $conn->prepare("UPDATE course SET course_name=?, category_ID=?, course_desc=?, course_duration=?, course_org_price=?, course_price=?, course_img=?, language=?, what_will_you_learn=?, requirements=? WHERE course_id=?");
+    if ($upCourse->execute([$course_name, $category_id, $course_desc, $course_duration, $course_OP, $course_SP, $img_select, $language, $what_will_you_learn, $requirements, $id])) {
         echo "<script>alert('Course updated successfully');</script>";
     } else {
         echo "<script>alert('Course could not be updated');</script>";

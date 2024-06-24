@@ -3,12 +3,13 @@ include("db_con.php");
 
 if(isset($_POST['addcoursebtn'])) {
     // Check if all required fields are filled
-    if($_POST['course_name'] != '' && $_POST['course_desc'] != '' && $_POST['course_duration'] != '' &&
+    if($_POST['course_name'] != ''  && $_POST['category_id'] != '' && $_POST['course_desc'] != '' && $_POST['course_duration'] != '' &&
        $_POST['course_OP'] != '' && $_POST['course_SP'] != '' && $_POST['course_language'] != '' &&
        !empty($_FILES['course_Img']['name']) && $_POST['what_will_you_learn'] != '' && $_POST['requirements'] != '') {
 
         // Fetch form data
         $course_name = $_POST['course_name'];
+        $category_id = $_POST['category_id']; // Ensure this matches an existing category_ID in the categories table
         $course_desc = $_POST['course_desc'];
         $course_duration = $_POST['course_duration'];
         $course_OP = $_POST['course_OP'];
@@ -27,11 +28,12 @@ if(isset($_POST['addcoursebtn'])) {
         move_uploaded_file($course_Img_temp, $img_folder);
 
         // Prepare SQL statement to insert course information
-        $sql = $conn->prepare('INSERT INTO course (course_name, course_desc, course_img, course_duration, course_price, course_org_price,language,what_will_you_learn,requirements) 
-                               VALUES (:course_name, :course_desc, :img_select, :course_duration, :course_SP, :course_OP, :language,:what_will_you_learn,:requirements)');
+        $sql = $conn->prepare('INSERT INTO course (course_name, category_ID, course_desc, course_img, course_duration, course_price, course_org_price, language, what_will_you_learn, requirements) 
+                               VALUES (:course_name, :category_id, :course_desc, :course_img, :course_duration, :course_SP, :course_OP, :language, :what_will_you_learn, :requirements)');
         $sql->bindParam(':course_name', $course_name);
+        $sql->bindParam(':category_id', $category_id);
         $sql->bindParam(':course_desc', $course_desc);
-        $sql->bindParam(':img_select', $img_select); 
+        $sql->bindParam(':course_img', $img_select); 
         $sql->bindParam(':course_duration', $course_duration);
         $sql->bindParam(':course_SP', $course_SP);
         $sql->bindParam(':course_OP', $course_OP);
@@ -64,63 +66,76 @@ if(isset($_POST['addcoursebtn'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://kit.fontawesome.com/c25eb3470e.js" crossorigin="anonymous"></script>
-   
-
+    <title>Add New Course</title>
 </head>
 <body>
-<?php
-// include_once("header.php");
-// include_once("left.php");
-?>
-<div class="right">
-    <div class="addCourse">
-        <h3>Add new course</h3>
-        <form action="#" method="post" enctype="multipart/form-data" id="courseForm">
-            <div class="row">
-                <label for="courseName">Course Name</label>
-                <input type="text" name="course_name" required>
-            </div>
-           
-            <div class="row">
-                <label>Course Description</label>
-                <textarea name="course_desc"required></textarea>
-            </div>
-            <div class="row">
-                <label>Course Duration</label>
-                <input type="text" name="course_duration"required>
-            </div>
-            
-            <div class="row">
-                <label>Course original price</label>
-                <input type="number" name="course_OP"required>
-            </div>
-            <div class="row">
-                <label>Course selling price</label>
-                <input type="number" name="course_SP"required>
-            </div>
-            <div class="row">
-                <label>Course image</label>
-                <input type="file" name="course_Img"required>
-            </div>
-            <div class="row">
-                <label>Language</label>
-                <input type="text" name="course_language"required>
-            </div>
-            <div class="row">
-                <label>What will they learn</label>
-                    <textarea name="what_will_you_learn"required></textarea>
-            </div>
-            <div class="row">
-                <label>Requirements</label>             
-                 <textarea name="requirements" required></textarea>
-            </div>
-            <div class="btns">
-                <button name="addcoursebtn">Add</button>
-                <button id="closebtn"><a href="../index.php?courses">Close</a></button>
-            </div>
-        </form>
+    <div class="right">
+        <div class="addCourse">
+            <h3>Add new course</h3>
+            <form action="#" method="post" enctype="multipart/form-data" id="courseForm">
+                <div class="row">
+                    <label for="courseName">Course Name</label>
+                    <input type="text" name="course_name" required>
+                </div>
+                <div class="row">
+                    <label>Category</label>
+                    <select name="category_id" required>
+                    <?php
+                    $get_categories = $conn->prepare("SELECT * FROM categories");
+                    $get_categories->setFetchMode(PDO::FETCH_ASSOC);
+                    $get_categories->execute();
+                    while ($row = $get_categories->fetch()) {
+                        echo "<option value='" . $row['category_ID'] . "'>" . $row['categoryName'] . "</option>";                    }
+                    ?>    
+                    </select>
+                </div>
+                <div class="row">
+                    <label>Course Description</label>
+                    <textarea name="course_desc" required></textarea>
+                </div>
+                <div class="row">
+                    <label>Course Duration</label>
+                    <input type="text" name="course_duration" required>
+                </div>
+                <div class="row">
+                    <label>Course original price</label>
+                    <input type="number" name="course_OP" required>
+                </div>
+                <div class="row">
+                    <label>Course selling price</label>
+                    <input type="number" name="course_SP" required>
+                </div>
+                <div class="row">
+                    <label>Course image</label>
+                    <input type="file" name="course_Img" required>
+                </div>
+                <div class="row">
+                    <label>Language</label>
+                    <select name="course_language" required>
+                    <?php
+                    $get_lang = $conn->prepare("SELECT * FROM lang");
+                    $get_lang->setFetchMode(PDO::FETCH_ASSOC);
+                    $get_lang->execute();
+                    while ($row = $get_lang->fetch()) {
+                        echo "<option value='" . $row['lang_name'] . "'>" . $row['lang_name'] . "</option>";
+                    }
+                    ?>    
+                    </select>
+                </div>
+                <div class="row">
+                    <label>What will they learn</label>
+                    <textarea name="what_will_you_learn" required></textarea>
+                </div>
+                <div class="row">
+                    <label>Requirements</label>             
+                    <textarea name="requirements" required></textarea>
+                </div>
+                <div class="btns">
+                    <button name="addcoursebtn">Add</button>
+                    <button id="closebtn"><a href="../index.php?courses">Close</a></button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 </body>
 </html>
-
