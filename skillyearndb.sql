@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2024 at 12:13 PM
+-- Generation Time: Jun 24, 2024 at 12:08 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -79,7 +79,8 @@ INSERT INTO `categories` (`category_ID`, `categoryName`, `cat_icon`) VALUES
 (2, 'Development', '<i class=\"fa-solid fa-code\"></i>'),
 (3, 'Marketting', '<i class=\"fa-solid fa-timeline\"></i>'),
 (4, 'Account', '<i class=\"fa-solid fa-file-invoice-dollar\"></i>'),
-(27, 'Design', '<i class=\"fa-solid fa-code\"></i>');
+(27, 'Design', '<i class=\"fa-solid fa-code\"></i>'),
+(31, 'Art', '<i class=\"fa-solid fa-timeline\"></i>');
 
 -- --------------------------------------------------------
 
@@ -99,8 +100,7 @@ CREATE TABLE `chapter` (
 --
 
 INSERT INTO `chapter` (`ch_id`, `ch_name`, `duration`, `course_id`) VALUES
-(8, 'intro to web4', '20minutes', 13),
-(10, 'basic css', '20min', 13);
+(11, 'basic css', '40min', 28);
 
 -- --------------------------------------------------------
 
@@ -141,16 +141,19 @@ CREATE TABLE `course` (
   `course_img` text NOT NULL,
   `course_duration` text NOT NULL,
   `course_price` int(11) NOT NULL,
-  `course_org_price` int(11) NOT NULL
+  `course_org_price` int(11) NOT NULL,
+  `language` varchar(100) NOT NULL,
+  `what_will_you_learn` varchar(255) NOT NULL,
+  `requirements` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`course_id`, `course_name`, `course_desc`, `course_img`, `course_duration`, `course_price`, `course_org_price`) VALUES
-(13, 'Learn react basic', 'learn complete react in 1 day', '../images/courseimg/react.png', '1 day', 300, 200),
-(15, 'graphic designing', 'gs', '../images/courseimg/', '5 days', 99, 199);
+INSERT INTO `course` (`course_id`, `course_name`, `course_desc`, `course_img`, `course_duration`, `course_price`, `course_org_price`, `language`, `what_will_you_learn`, `requirements`) VALUES
+(28, 'graphic designing', 'gd', 'images/courseimg/graphic-design-course[1].webp', '23days', 23, 32, 'marathi', 'kt\r\ngraphic desihndhn', 'need knowledge of photoshop'),
+(30, 'Communicate with AIewr', 'wqreqrw', 'images/courseimg/graphic.jpg', '34', 111, 344, 'hindi', '', '');
 
 -- --------------------------------------------------------
 
@@ -174,6 +177,26 @@ INSERT INTO `faqs` (`q_id`, `qsn`, `ans`) VALUES
 (3, 'what is pen', 'Its just a pen'),
 (4, 'what is this website', 'This website is for making students or learners or disabilities to learn from their home without going out at their time any where anytime and any one can just buy and learn with affordable price.'),
 (5, 'Whats the pre requisite to learn any course', 'just ur time and serious mind to learn and become something');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `f_id` int(11) NOT NULL,
+  `f_content` text NOT NULL,
+  `stu_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`f_id`, `f_content`, `stu_id`) VALUES
+(2, 'Its nothing', 29),
+(3, 'yp', 25);
 
 -- --------------------------------------------------------
 
@@ -234,12 +257,30 @@ CREATE TABLE `lessons` (
   `ch_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `lessons`
+-- Table structure for table `requirements`
 --
 
-INSERT INTO `lessons` (`l_id`, `l_name`, `l_link`, `l_duration`, `ch_id`) VALUES
-(2, 'html basic', 'New Rules.mp4', '3hr', 8);
+CREATE TABLE `requirements` (
+  `r_id` int(10) NOT NULL,
+  `requirement` text NOT NULL,
+  `course_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `requirements`
+--
+
+INSERT INTO `requirements` (`r_id`, `requirement`, `course_id`) VALUES
+(6, '', 25),
+(7, 're1', 27),
+(8, 're0', 28),
+(9, 're10', 29),
+(10, 'eng,jid,hhh,kkkk', 30),
+(11, 'eng,jid,hhh,kkkk3', 31),
+(12, 're109', 32);
 
 -- --------------------------------------------------------
 
@@ -252,17 +293,17 @@ CREATE TABLE `student` (
   `stu_name` varchar(255) NOT NULL,
   `stu_email` varchar(255) NOT NULL,
   `stu_pass` varchar(255) NOT NULL,
-  `stu_img` text NOT NULL DEFAULT '../student/images/profileIMG/std1.jpg'
+  `stu_img` text NOT NULL DEFAULT '../student/images/profileIMG/std1.jpg',
+  `stu_occ` text NOT NULL DEFAULT 'Student'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`stu_id`, `stu_name`, `stu_email`, `stu_pass`, `stu_img`) VALUES
-(25, 'matheen2', 'matheen2@mail.com', '2', '../student/images/profileImg/ic_google-3.png'),
-(29, 'saqlain', 'itsSaqu@gmail.com', '121', '../student\\images\\profileImg/std1.jpg'),
-(40, 'demo', 'demo@mail.com', '121', '../student\\images\\profileImg/std1.jpg');
+INSERT INTO `student` (`stu_id`, `stu_name`, `stu_email`, `stu_pass`, `stu_img`, `stu_occ`) VALUES
+(25, 'matheen2', 'matheen2@mail.com', '2', 'stdIMG/Screenshot 2024-06-13 171134.png', 'Designer'),
+(29, 'saqlain', 'itsSaqu@gmail.com', '121', 'stdIMG/std2saq.jpg', 'Student');
 
 -- --------------------------------------------------------
 
@@ -368,6 +409,12 @@ ALTER TABLE `faqs`
   ADD PRIMARY KEY (`q_id`);
 
 --
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`f_id`);
+
+--
 -- Indexes for table `instructor`
 --
 ALTER TABLE `instructor`
@@ -385,6 +432,12 @@ ALTER TABLE `lang`
 ALTER TABLE `lessons`
   ADD PRIMARY KEY (`l_id`),
   ADD KEY `ch_id` (`ch_id`);
+
+--
+-- Indexes for table `requirements`
+--
+ALTER TABLE `requirements`
+  ADD PRIMARY KEY (`r_id`);
 
 --
 -- Indexes for table `student`
@@ -430,13 +483,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_ID` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `category_ID` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `chapter`
 --
 ALTER TABLE `chapter`
-  MODIFY `ch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -448,13 +501,19 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `faqs`
 --
 ALTER TABLE `faqs`
   MODIFY `q_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `instructor`
@@ -473,6 +532,12 @@ ALTER TABLE `lang`
 --
 ALTER TABLE `lessons`
   MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `requirements`
+--
+ALTER TABLE `requirements`
+  MODIFY `r_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `student`
