@@ -435,6 +435,7 @@ font-weight: lighter;
 }
 .course-cd{
 margin-top: 3%;
+padding-bottom: 3%;
 }
 .course-enroll-c{
     margin-top: -2%;
@@ -454,4 +455,28 @@ margin-top: 3%;
    color: white;
    font-weight: bold;
    border-radius: 7px;
+   cursor: pointer;
+}
+
+.wwul{
+    width:100%;
+    padding-top:5%;
+}
+.wwul-content{
+    padding:2%;
+    background-color: #f7f4f4;
+}
+.inst-details{
+   
+    width:100%;
+    
+}
+.inst-detail{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    background-color: #f7f4f4;
+}
+.instructor_img{
 }

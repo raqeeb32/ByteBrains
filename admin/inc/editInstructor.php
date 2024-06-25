@@ -50,7 +50,7 @@ if(isset($_GET['id'])){
                 <label>Profile photo</label>
                 <input type="file" name="inst_Img">
                 <?php if(isset($row['photo'])) { ?>
-                    <img src="<?php echo $row['photo']; ?>" alt="Instructor Image" style="max-width: 150px; max-height: 150px;">
+                    <img src="instIMG/.<?php echo $row['photo']; ?>" alt="Instructor Image" style="max-width: 150px; max-height: 150px;">
                 <?php } ?>
             </div>
             <div class="btns">
@@ -75,6 +75,7 @@ if (isset($_POST["editInstBtn"])) {
         $tmp_name = $_FILES["inst_Img"]["tmp_name"];
         $inst_Img = 'instIMG/'. $_FILES["inst_Img"]["name"]; // Define the image path
         move_uploaded_file($tmp_name, $inst_Img); // Move the uploaded file to the specified path
+        $img_select=$_FILES["inst_Img"]["name"];
     } else {
         // No new image selected, retain the existing one
         $inst_Img = $row['inst_Img'];
@@ -82,7 +83,7 @@ if (isset($_POST["editInstBtn"])) {
     
     // Update student details including the image URL
     $upCourse = $conn->prepare("UPDATE instructor SET name=?,email=?, password=?,bio=?,specialization=?, photo=? WHERE id=? ");
-    if ($upCourse->execute([$inst_name, $inst_email, $inst_pass,$inst_bio,$inst_specialization, $inst_Img, $id])) {
+    if ($upCourse->execute([$inst_name, $inst_email, $inst_pass,$inst_bio,$inst_specialization, $img_select, $id])) {
         echo "<script>alert('Instructor updated successfully');</script>";
     } else {
         echo "<script>alert('Instructor could not be updated');</script>";

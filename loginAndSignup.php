@@ -99,12 +99,14 @@ function authenticateUser($email, $password, $conn) {
     $check_log->bindParam(':em', $email);
     $check_log->bindParam(':pwd', $password);
     $check_log->execute();
+    $row=$check_log->fetch(PDO::FETCH_ASSOC);
     $count = $check_log->rowCount();
 
     if ($count > 0) {
         $_SESSION['email'] = $email;
         $_SESSION['instlogin'] = true;
         $_SESSION['isLogin'] = true;
+        $_SESSION['inst_id']=$row['id'];
         return true;
     } else {
         return false;

@@ -1,62 +1,84 @@
 <?php
 include("db_con.php");
+if(!isset($_SESSION)){
+    session_start();
+}
+if(isset($_SESSION['instlogin'])){
+    $ins_id = $_SESSION['inst_id'];
 
-if(isset($_POST['addcoursebtn'])) {
-    // Check if all required fields are filled
-    if($_POST['course_name'] != ''  && $_POST['category_id'] != '' && $_POST['course_desc'] != '' && $_POST['course_duration'] != '' &&
-       $_POST['course_OP'] != '' && $_POST['course_SP'] != '' && $_POST['course_language'] != '' &&
-       !empty($_FILES['course_Img']['name']) && $_POST['what_will_you_learn'] != '' && $_POST['requirements'] != '') {
-
-        // Fetch form data
-        $course_name = $_POST['course_name'];
-        $category_id = $_POST['category_id']; // Ensure this matches an existing category_ID in the categories table
-        $course_desc = $_POST['course_desc'];
-        $course_duration = $_POST['course_duration'];
-        $course_OP = $_POST['course_OP'];
-        $course_SP = $_POST['course_SP'];
-        $language = $_POST['course_language'];
-        $what_will_you_learn = $_POST['what_will_you_learn'];
-        $requirements = $_POST['requirements'];
-
-        // File upload handling
-        $course_Img = $_FILES['course_Img']['name']; // Getting image name
-        $course_Img_temp = $_FILES['course_Img']['tmp_name']; // Storing in temp var
-        $img_folder = '../images/courseimg/' . $course_Img; // Folder to store
-        $img_select = 'images/courseimg/' . $course_Img;
-        
-        // Move uploaded file to destination folder
-        move_uploaded_file($course_Img_temp, $img_folder);
-
-        // Prepare SQL statement to insert course information
-        $sql = $conn->prepare('INSERT INTO course (course_name, category_ID, course_desc, course_img, course_duration, course_price, course_org_price, language, what_will_you_learn, requirements) 
-                               VALUES (:course_name, :category_id, :course_desc, :course_img, :course_duration, :course_SP, :course_OP, :language, :what_will_you_learn, :requirements)');
-        $sql->bindParam(':course_name', $course_name);
-        $sql->bindParam(':category_id', $category_id);
-        $sql->bindParam(':course_desc', $course_desc);
-        $sql->bindParam(':course_img', $img_select); 
-        $sql->bindParam(':course_duration', $course_duration);
-        $sql->bindParam(':course_SP', $course_SP);
-        $sql->bindParam(':course_OP', $course_OP);
-        $sql->bindParam(':language', $language);
-        $sql->bindParam(':what_will_you_learn', $what_will_you_learn);
-        $sql->bindParam(':requirements', $requirements);
-        
-        // Execute the SQL statement
-        $result = $sql->execute();     
-        // Check if everything was inserted successfully
-        if ($result) {
-            echo '<script>alert("Course created successfully");</script>';
-            echo "<script>window.open('../index.php?courses','_self')</script>";
-            exit();
-        } else {
-            echo '<script>alert("Error creating course");</script>';
-            // Output the actual error message for debugging purposes
-            echo "Error: " . $sql->errorInfo()[2];
-        }
+    $get_inst_name = $conn->prepare("SELECT * FROM instructor WHERE id=:ins_id");
+    $get_inst_name->bindParam(':ins_id', $inst_id, PDO::PARAM_STR);
+    $get_inst_name->execute();
+    $row = $get_inst_name->fetch(PDO::FETCH_ASSOC);
+    // Check if a row was returned (assuming email is unique in the instructor table)
+    if($row){
+        $inst_name = $row['name']; // Replace 'inst_name' with your actual column name
+        // Now $inst_name contains the instructor's name
     } else {
-        echo '<script>alert("Fill all details");</script>';
+        // Handle case where no instructor found for the given email
+        $inst_name = "Instructor Name Not Found";
+    }
+    if(isset($_POST['addcoursebtn'])) {
+        // Check if all required fields are filled
+        if($_POST['course_name'] != ''  && $_POST['category_id'] != '' && $_POST['course_desc'] != '' && $_POST['course_duration'] != '' &&
+           $_POST['course_OP'] != '' && $_POST['course_SP'] != '' && $_POST['course_language'] != '' &&
+           !empty($_FILES['course_Img']['name']) && $_POST['what_will_you_learn'] != '' && $_POST['requirements'] != '') {
+    
+            // Fetch form data
+            $course_name = $_POST['course_name'];
+            $category_id = $_POST['category_id']; // Ensure this matches an existing category_ID in the categories table
+            $course_desc = $_POST['course_desc'];
+            $course_duration = $_POST['course_duration'];
+            $course_OP = $_POST['course_OP'];
+            $course_SP = $_POST['course_SP'];
+            $language = $_POST['course_language'];
+            $what_will_you_learn = $_POST['what_will_you_learn'];
+            $requirements = $_POST['requirements'];
+            // File upload handling
+            $course_Img = $_FILES['course_Img']['name']; // Getting image name
+            $course_Img_temp = $_FILES['course_Img']['tmp_name']; // Storing in temp var
+            $img_folder = '../images/courseimg/' . $course_Img; // Folder to store
+            $img_select = 'images/courseimg/' . $course_Img;
+            
+            // Move uploaded file to destination folder
+            move_uploaded_file($course_Img_temp, $img_folder);
+    
+            // Prepare SQL statement to insert course information
+            $sql = $conn->prepare('INSERT INTO course (course_name, category_ID, course_desc, course_img, course_duration, course_price, course_org_price, language, what_will_you_learn, requirements,ins_id) 
+                                   VALUES (:course_name, :category_id, :course_desc, :course_img, :course_duration, :course_SP, :course_OP, :language, :what_will_you_learn, :requirements,:inst_id)');
+            $sql->bindParam(':course_name', $course_name);
+            $sql->bindParam(':category_id', $category_id);
+            $sql->bindParam(':course_desc', $course_desc);
+            $sql->bindParam(':course_img', $img_select); 
+            $sql->bindParam(':course_duration', $course_duration);
+            $sql->bindParam(':course_SP', $course_SP);
+            $sql->bindParam(':course_OP', $course_OP);
+            $sql->bindParam(':language', $language);
+            $sql->bindParam(':what_will_you_learn', $what_will_you_learn);
+            $sql->bindParam(':requirements', $requirements);
+            $sql->bindParam(':inst_id', $ins_id);
+            
+            // Execute the SQL statement
+            $result = $sql->execute();     
+            // Check if everything was inserted successfully
+            if ($result) {
+                echo '<script>alert("Course created successfully");</script>';
+                echo "<script>window.open('../index.php?courses','_self')</script>";
+                exit();
+            } else {
+                echo '<script>alert("Error creating course");</script>';
+                // Output the actual error message for debugging purposes
+                echo "Error: " . $sql->errorInfo()[2];
+            }
+        } else {
+            echo '<script>alert("Fill all details");</script>';
+        }
     }
 }
+else{
+    header('location:../loginAndSignup.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -73,6 +95,10 @@ if(isset($_POST['addcoursebtn'])) {
         <div class="addCourse">
             <h3>Add new course</h3>
             <form action="#" method="post" enctype="multipart/form-data" id="courseForm">
+                <div class="row" hidden>
+                    <label>Instructor name</label>
+                    <input type="text" name="inst_name" value="<?php echo $ins_id; ?>">
+                </div>
                 <div class="row">
                     <label for="courseName">Course Name</label>
                     <input type="text" name="course_name" required>

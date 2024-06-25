@@ -1,13 +1,22 @@
 <link rel="stylesheet" href="../css/style.css">
 <?php
 include_once("db_con.php");
-
+if(!isset($_SESSION)){
+    session_start();
+}
+if(isset($_SESSION['instlogin'])){
+    $ins_id = $_SESSION['inst_id'];
+}
+else{
+    header('location:../loginAndSignup.php');
+}
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
     $get_course = $conn->prepare("SELECT * FROM course WHERE course_id=?");
     $get_course->execute([$id]);
     $row = $get_course->fetch(PDO::FETCH_ASSOC);
 }
+
 ?>
 <div class="right">
     <div class="addCourse">

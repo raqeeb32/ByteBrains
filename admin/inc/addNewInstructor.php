@@ -16,6 +16,7 @@ if(isset($_POST['addInstBtn'])){
         $inst_Img_temp=$_FILES['inst_Img']['tmp_name'];//storing in temp var
         $img_folder = 'instIMG/'.$inst_Img; //folder to store
         move_uploaded_file($inst_Img_temp,$img_folder);//storing into the folder
+        $img_select=$inst_Img;
 
         $sql = $conn->prepare('INSERT INTO instructor (name,email,password,bio,specialization,photo) VALUES (:inst_name, :inst_email,:inst_pass,:bio,:specialization,:img_folder);');
         $sql->bindParam(':inst_name', $inst_name);
@@ -23,7 +24,7 @@ if(isset($_POST['addInstBtn'])){
         $sql->bindParam(':inst_pass', $inst_pass);
         $sql->bindParam(':bio', $bio);
         $sql->bindParam(':specialization', $specialization);
-        $sql->bindParam(':img_folder', $img_folder);
+        $sql->bindParam(':img_folder', $img_select);
         
         $result = $sql->execute();
         if ($result) {
