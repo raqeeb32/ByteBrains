@@ -477,6 +477,13 @@ padding-bottom: 3%;
     text-align: center;
     width: 100%;
     background-color: #f7f4f4;
+    margin-bottom: 20%;
 }
 .instructor_img{
+    position: relative;
+    right:-45%;
+    width:10%;
+    height:10%;
+    border-radius:100%;
+    padding-top:1%;
 }

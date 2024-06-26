@@ -153,18 +153,16 @@ $ins_detail->execute();
 // Fetch the instructor details
 $ins_detail = $ins_detail->fetch(PDO::FETCH_ASSOC);
 
-echo '<img class="instructor_img" style="width:10%;height:10%;border-radius:80%;padding-top:1%;" src="admin/inc/instIMG/'.$ins_detail["photo"].'" alt="Instructor image">';
-echo '<span>' . htmlspecialchars($ins_detail["name"]) . '</span>';
-echo '<span>' . htmlspecialchars($ins_detail["email"]) . '</span>';
-echo '<span>' . htmlspecialchars($ins_detail["specialization"]) . '</span>';
-echo '<span>' . htmlspecialchars($ins_detail["bio"]) . '</span>';
-
+echo '<img class="instructor_img" src="admin/inc/instIMG/'.$ins_detail["photo"].'" alt="Instructor image">';
+echo '<span>Name: ' . htmlspecialchars($ins_detail["name"]) . '</span>';
+echo '<span> Email: ' . htmlspecialchars($ins_detail["email"]) . '</span>';
+if(isset($ins_detail["specialization"])){echo '<span>specialization: ' . htmlspecialchars($ins_detail["specialization"]) . '</span>';}
+if(isset($ins_detail["bio"])){echo '<span>Bio: ' . htmlspecialchars($ins_detail["bio"]) . '</span>';}
 ?>
 </div>
-
-</div>  
+</div>
 </section>
-
+<?php include_once("inc/footer.php"); ?>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     var acc = document.getElementsByClassName("accordion");
