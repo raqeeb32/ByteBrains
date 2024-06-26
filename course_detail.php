@@ -110,20 +110,22 @@ if($get_course->rowCount() > 0){
              <?php
              if(isset($_SESSION["stuLogin"])){
                 $stud_id=$_SESSION["stu_id"];
+             
                 $check_enrolled=$conn->prepare("SELECT * FROM enrollment WHERE stu_id=:stud_id AND course_p_id=:course_id");
                 $check_enrolled->bindParam(':stud_id',$stud_id);
-                $check_enrolled->bindParam(':course_id',$$course_id);
+                $check_enrolled->bindParam(':course_id',$course_id);
+                $check_enrolled->execute();
                 if($check_enrolled->rowCount()==1){
-                    // echo' <a id="enroll-btn" href="#">Continue</a>';
-                   echo' <a id="enroll-btn" href="courseLearn.php">Continue</a>';
+                   echo' <a id="enroll-btn" href="student\stuInc\my_courses.php">Continue</a>';
+                   
                 }
                 else{
-                    echo'<a id="enroll-btn" href="checkout.php?purchase_course_id=<?php echo $course_id; ?>">Buy now</a>';
-                  }
+                    echo '<a id="enroll-btn" href="checkout.php?purchase_course_id=' . $course_id . '">Buy now</a>';
+                }
              }
              else{
-                echo'<a id="enroll-btn" href="checkout.php?purchase_course_id=<?php echo $course_id; ?>">Buy now</a>';
-              }
+                echo '<a id="enroll-btn" href="checkout.php?purchase_course_id=' . $course_id . '">Buy now</a>';
+            }
              ?>
         </div>
     </div>

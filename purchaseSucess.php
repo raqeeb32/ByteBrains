@@ -14,7 +14,7 @@ if(!isset($_SESSION["stuLogin"])){
 if(isset($_GET["purchase_course_id"])){
     $purchase_course_id = $_GET["purchase_course_id"];
     $stud_id = $_SESSION['stu_id'];  
-
+   echo '<script> alert(' . $purchase_course_id . '); </script>';
     // Get current timestamp
     $current_time = date("Y-m-d H:i:s");
 

@@ -19,10 +19,11 @@ $purchase_course_id=$_GET["purchase_course_id"];
     <link rel="stylesheet" href="css/style.css">
     <title>check out</title>
 </head>
-<h1>Check Out</h1>
+<body>
+<h1 style="text-align:center;">Check Out</h1>
     <div class="payment_check">
         <span>Do you want to purchase this course?</span>
-        <a class="btn yes-btn" href="purchaseSucess.php?purchase_course_id=<?php echo $purchase_course_id?>">Yes</a>
+        <a class="btn yes-btn" href="purchaseSucess.php?purchase_course_id=<?php echo $purchase_course_id; ?>">Yes</a>
         <a class="btn no-btn" href="courses.php">No</a>
     </div>
 </body>

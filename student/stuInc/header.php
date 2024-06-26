@@ -1,34 +1,4 @@
-<?php
-// include_once("db_con.php");
-// if(!isset($_SESSION)){
-// session_start();
-// }
-// if(isset($_SESSION["stuLogin"])){
-//     $stu_email = $_SESSION['email'];
 
-//     // Fetch student details from database
-//     $stmt = $conn->prepare("SELECT * FROM student WHERE stu_email = :stu_email");
-//     $stmt->bindParam(':stu_email', $stu_email);
-//     $stmt->execute();
-
-//     // Check if a record exists
-//     if($stmt->rowCount() > 0) {
-//         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-//         $stu_img = $result['stu_img'];
-//         $stu_name=$result['stu_name'];
-//         // Additional variables from $result can be accessed here
-//     } else {
-//         // Handle case where no record was found for the logged in student
-//         echo '<script>location.href="../index.php";</script>';
-//         exit; // Exit to prevent further execution
-//     }
-// } else {
-//     // Redirect if student is not logged in
-//     echo '<script>location.href="../index.php";</script>';
-//     exit; // Exit to prevent further execution
-// }
-?>
-<!-- <link rel="stylesheet" href="../css/style.css"> -->
 <header>
     <div class="logo"><a href="#">SkillyEarn</a></div>
     <div class="panel">Student pannel</div>
