@@ -14,12 +14,14 @@
                <button name="search" class="search_btn">Go</button>
           </form>
          </li>
-        <li><a href="#">About us</a></li>
-        <li id="cart"><a href="#"><img src="images/cartI.png" id=cart-icon alt="cart image"> <span id="cart-count">0</span></a></li>
+        <li><a href="./about.php">About us</a></li>
       </ul>
     </nav> 
     <?php
-    session_start();
+    if(!isset($_SESSION)){
+      session_start();
+    }
+ 
     if(isset($_SESSION['isLogin'])){
       echo '<div class="log-sign">
     <!-- <a href="loginAndSignup/index.html" class="log">Login</a>  -->

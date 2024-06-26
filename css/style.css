@@ -77,14 +77,6 @@ header{
     cursor: pointer;
 }
 
-#cart:hover{
-   color:var(--primary-color);
-}
-#cart-icon{
-    width:30px;
-    height:30px;
-    margin-left: 3px;
-}
 .nav-links li a{
     margin: 0;
     padding: 1rem 1.5rem;
@@ -265,12 +257,6 @@ gap:5%;
     border-top-right-radius: 1.2rem;
     /* border: 2px solid blue; */
 }
-/*.aboutCourse{
-    border:1px solid black;
-}
-.courseDuration{
-    border:1px solid blue; 
-}*/
 .coursePrice{
     display: flex;
     justify-content: space-between;    
@@ -449,7 +435,7 @@ padding-bottom: 3%;
 #enroll-btn{
     margin-top: 1rem;
    width:70%; 
-   height:50px;
+   padding: 10px;
    border: none;
    background-color: var(--primary-color);
    color: white;
@@ -486,4 +472,66 @@ padding-bottom: 3%;
     height:10%;
     border-radius:100%;
     padding-top:1%;
+}
+.about-banner{
+    width:100vw;
+     height:60vh;
+    background-image:url('../images/about-banner-img.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    justify-content: center;
+}
+.about_heading{
+  padding-top: 200px;
+}
+.about-content{
+    font-size:large;
+}
+/* check out  */
+.payment_check {
+    text-align: center; /* Center-align content within the div */
+    margin-top: 20px; /* Adjust spacing as needed */
+}
+
+.payment_check span {
+    display: block; /* Make the text span full width */
+    margin-bottom: 20px; /* Add space below the text */
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.yes-btn {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.yes-btn:hover {
+    background-color: #218838;
+    border-color: #218838;
+}
+
+.no-btn {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.no-btn:hover {
+    background-color: #c82333;
+    border-color: #c82333;
 }

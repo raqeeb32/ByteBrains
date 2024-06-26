@@ -121,15 +121,17 @@ if (isset($_POST['loginBTN']) && isset($_POST['email']) && isset($_POST['passwor
         header('location:instructor/index.php');//instructor dashboard
         exit();
     } else {
-        $check_log = $conn->prepare("SELECT stu_email,stu_pass FROM student WHERE stu_email=:em AND stu_pass=:pwd");
+        $check_log = $conn->prepare("SELECT * FROM student WHERE stu_email=:em AND stu_pass=:pwd");
         $check_log->bindParam(':em', $email);
         $check_log->bindParam(':pwd', $password);
         $check_log->execute();
+        $row=$check_log->fetch(PDO::FETCH_ASSOC);
         $count = $check_log->rowCount();
 
         if ($count == 1) {
             $_SESSION['email'] = $email;
             $_SESSION['stuLogin'] = true;
+            $_SESSION['stu_id']=$row['stu_id'];
             $_SESSION['isLogin'] = true;
             header('location:index.php');
             exit();

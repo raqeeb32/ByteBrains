@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2024 at 12:08 PM
+-- Generation Time: Jun 26, 2024 at 04:38 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -100,7 +100,10 @@ CREATE TABLE `chapter` (
 --
 
 INSERT INTO `chapter` (`ch_id`, `ch_name`, `duration`, `course_id`) VALUES
-(11, 'basic css', '40min', 28);
+(14, 'Intro to react', '10min', 48),
+(15, 'basic html', '20min', 48),
+(16, 'Basic css', '20min', 48),
+(17, 'Basic Javascript', '30min', 48);
 
 -- --------------------------------------------------------
 
@@ -137,6 +140,7 @@ INSERT INTO `contact` (`con_id`, `email`, `address1`, `address2`, `yt`, `fb`, `g
 CREATE TABLE `course` (
   `course_id` int(11) NOT NULL,
   `course_name` text NOT NULL,
+  `category_ID` int(11) NOT NULL,
   `course_desc` text NOT NULL,
   `course_img` text NOT NULL,
   `course_duration` text NOT NULL,
@@ -144,16 +148,30 @@ CREATE TABLE `course` (
   `course_org_price` int(11) NOT NULL,
   `language` varchar(100) NOT NULL,
   `what_will_you_learn` varchar(255) NOT NULL,
-  `requirements` text NOT NULL
+  `requirements` text NOT NULL,
+  `ins_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`course_id`, `course_name`, `course_desc`, `course_img`, `course_duration`, `course_price`, `course_org_price`, `language`, `what_will_you_learn`, `requirements`) VALUES
-(28, 'graphic designing', 'gd', 'images/courseimg/graphic-design-course[1].webp', '23days', 23, 32, 'marathi', 'kt\r\ngraphic desihndhn', 'need knowledge of photoshop'),
-(30, 'Communicate with AIewr', 'wqreqrw', 'images/courseimg/graphic.jpg', '34', 111, 344, 'hindi', '', '');
+INSERT INTO `course` (`course_id`, `course_name`, `category_ID`, `course_desc`, `course_img`, `course_duration`, `course_price`, `course_org_price`, `language`, `what_will_you_learn`, `requirements`, `ins_id`) VALUES
+(48, 'Learn complete react', 2, 'Learn complete react from beginner to advanced in this tutorial and become ready to apply for the role as a junior react developer or frontend react developer.', 'images/courseimg/graphic.jpg', '5 hrs', 1999, 2999, 'English ', 'Learn all the details about react\r\nlearn advanced topics ', 'Basic HTML\r\nBasic CSS', 89),
+(49, 'learn wordpress', 2, 'learn web design in this sreies', 'images/courseimg/wordpress.jpg', '1day', 199, 200, 'English ', 'learn wordpress', 'system', 89);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `enrollment`
+--
+
+CREATE TABLE `enrollment` (
+  `e_id` int(11) NOT NULL,
+  `stu_id` int(11) NOT NULL,
+  `course_p_id` int(11) NOT NULL,
+  `purchase_time` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -219,7 +237,7 @@ CREATE TABLE `instructor` (
 --
 
 INSERT INTO `instructor` (`id`, `name`, `email`, `password`, `photo`, `bio`, `specialization`) VALUES
-(89, 'iamInst', 'inst2@mail.com', '2', '../images/instructorIMG/std1.jpg', '', ''),
+(89, 'iamInst', 'inst2@mail.com', '2', 'WhatsApp Image 2024-06-10 at 11.27.52 AM.jpeg', 'I am the best teacher in SkillyEarn and i am the best ui/ux designer in this college. I will get job one day  as a designer. I hope!', 'UI/UX Designer'),
 (90, 'Ayman1', 'aafath@gmail.com', '121', '', 'i dont know', 'developer'),
 (91, 'saq', 'saq1@mail.com', '1', '../images/instructorIMG/std1.jpg', '', '');
 
@@ -256,6 +274,15 @@ CREATE TABLE `lessons` (
   `l_duration` text NOT NULL,
   `ch_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `lessons`
+--
+
+INSERT INTO `lessons` (`l_id`, `l_name`, `l_link`, `l_duration`, `ch_id`) VALUES
+(6, 'Basic html tags', 'New Rules.mp4', '10min', 14),
+(7, 'Intro to css', 'New Rules.mp4', '10min', 14),
+(8, 'into to js', 'New Rules.mp4', '10min', 14);
 
 -- --------------------------------------------------------
 
@@ -400,7 +427,17 @@ ALTER TABLE `contact`
 -- Indexes for table `course`
 --
 ALTER TABLE `course`
-  ADD PRIMARY KEY (`course_id`);
+  ADD PRIMARY KEY (`course_id`),
+  ADD KEY `category_ID` (`category_ID`),
+  ADD KEY `ins_id` (`ins_id`);
+
+--
+-- Indexes for table `enrollment`
+--
+ALTER TABLE `enrollment`
+  ADD PRIMARY KEY (`e_id`),
+  ADD KEY `stu_id` (`stu_id`),
+  ADD KEY `course_p_id` (`course_p_id`);
 
 --
 -- Indexes for table `faqs`
@@ -489,7 +526,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `chapter`
 --
 ALTER TABLE `chapter`
-  MODIFY `ch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -501,7 +538,13 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
+--
+-- AUTO_INCREMENT for table `enrollment`
+--
+ALTER TABLE `enrollment`
+  MODIFY `e_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `faqs`
@@ -531,7 +574,7 @@ ALTER TABLE `lang`
 -- AUTO_INCREMENT for table `lessons`
 --
 ALTER TABLE `lessons`
-  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `requirements`
@@ -572,6 +615,20 @@ ALTER TABLE `user`
 --
 ALTER TABLE `chapter`
   ADD CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `course`
+--
+ALTER TABLE `course`
+  ADD CONSTRAINT `category_ID` FOREIGN KEY (`category_ID`) REFERENCES `categories` (`category_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `ins_id` FOREIGN KEY (`ins_id`) REFERENCES `instructor` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `enrollment`
+--
+ALTER TABLE `enrollment`
+  ADD CONSTRAINT `course_p_id` FOREIGN KEY (`course_p_id`) REFERENCES `course` (`course_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `stu_id` FOREIGN KEY (`stu_id`) REFERENCES `student` (`stu_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `lessons`
