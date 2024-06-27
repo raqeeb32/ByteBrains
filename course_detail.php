@@ -116,7 +116,7 @@ if($get_course->rowCount() > 0){
                 $check_enrolled->bindParam(':course_id',$course_id);
                 $check_enrolled->execute();
                 if($check_enrolled->rowCount()==1){
-                   echo' <a id="enroll-btn" href="student\stuInc\my_courses.php">Continue</a>';
+                   echo' <a id="enroll-btn" href="student/index.php?my_courses">Continue</a>';
                    
                 }
                 else{

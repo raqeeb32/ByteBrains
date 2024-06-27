@@ -33,17 +33,17 @@ if(!isset($_SESSION)){
                             <td>".$row['ch_name']."</td>
                             <td>
                                 <a href='inc/editChapter.php?id=".$row['ch_id']."' title='Edit'>Edit</a>
-                                <a style='color:red' href='index.php?chapters&del_chapter=" . $row['ch_id'] . "' title='Delete'>Delete</a>
+                                <a style='color:red' href='chapters.php?chapters&del_chapter=" . $row['ch_id'] . "' title='Delete'>Delete</a>
                                 <a href='lessons.php?lessons=".$row['ch_id']."' title='lessons'>View lessons</a>
 
                                 </td>
                         </tr>";
                     }
                 }
-               else{
-                        echo "<script>alert('You havent selected any chapter');</script>";
-                        echo "<script>window.open('index.php?courses','_self');</script>";
-                   }
+            //    else{
+            //             echo "<script>alert('You havent selected any chapter');</script>";
+            //             echo "<script>window.open('index.php?courses','_self');</script>";
+            //        }
                 
               
                 ?>

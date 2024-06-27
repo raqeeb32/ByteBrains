@@ -1,4 +1,4 @@
-
+<!-- <link rel="stylesheet" href="../css/style.css"> -->
 <?php
 // Start the session if not already started
 if(!isset($_SESSION)) {
@@ -13,7 +13,8 @@ if(isset($_SESSION['stuLogin'])) {
     $stu_id = $_SESSION['stu_id'];
 
     // Include header once session is confirmed
-    include_once("header.php");
+    // include_once("header.php");
+    // include_once("side.php");
     ?>
     <div class="right">
         <h2 style="text-align:center;">My courses</h2>
@@ -42,7 +43,7 @@ if(isset($_SESSION['stuLogin'])) {
                     <p><b>Duration:</b><?php echo $row['course_duration']; ?></p>
                     <p><b>Language:</b> <?php echo $row['language']; ?></p>
                     <p><b>Price:</b>Price: ₹<?php echo $row['course_price']; ?></p>
-                   <br> <a id="watch-btn" href="stuInc/watchCourse.php?course_id=<?php echo $row['course_id']; ?>">Watch</a> 
+                   <br> <a id="watch-btn" href="watchCourse.php?course_id=<?php echo $row['course_id']; ?>">Watch</a> 
                     </div>
                              
                 </div>

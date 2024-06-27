@@ -1,79 +1,80 @@
 <?php
 if(!isset($_SESSION)){
     session_start();
- }
- if(isset($_SESSION['instlogin'])){
+}
+if(isset($_SESSION['instlogin'])){
     include_once("inc/db_con.php");
-    // include_once("inc/header.php");
-    // include_once("inc/left.php");
-    ?>
+    // Include CSS here to ensure it's loaded before displaying HTML
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Lessons</title>
     <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 <div class="right">
-<h3>Lessons</h3>
-<div class="course_table">
-            <table>
-                <tr>
-                    <th>Sl.no</th>
-                    <th>Name</th>
-                    <th>Video link</th>
-                    <th>Duration</th>
-                    <th>Actions</th>
-                </tr>
-               
-                <?php
-                if(isset($_GET['lessons'])){
-                    $chapter_id=$_GET['lessons'];
-                    $i=1;
-                    $getCourse=$conn->prepare("SELECT * FROM `lessons` WHERE ch_id=$chapter_id");     
-                    $getCourse->setFetchMode(PDO::FETCH_ASSOC);
-                    $getCourse->execute();
-                    $count=$getCourse->rowCount();
-                    if($count>0){
-                        while($row=$getCourse->fetch()){
-                            echo "
-                            <tr>
-                                <td>".$i++."</td>
-                                <td>".$row['l_name']."</td>
-                                <td> ".$row['l_link']."</td>
-                                <td>".$row['l_duration']."</td>
-                      
-                                <td>
-                                    <a href='inc/editLesson.php?lessonId=".$row['l_id']."' title='Edit'>Edit</a>
-                                    <a style='color:red' href='index.php?chapters&del_lesson=" . $row['l_id'] . "' title='Delete'>Delete</a>
-                                </td>
-                            </tr>";
-                        }
-                    }else{
-                        echo "<script>alert('No lessons for this chapter');</script>";
+    <h3>Lessons</h3>
+    <div class="course_table">
+        <table>
+            <tr>
+                <th>Sl.no</th>
+                <th>Name</th>
+                <th>Video link</th>
+                <th>Duration</th>
+                <th>Actions</th>
+            </tr>
+            <?php
+            if(isset($_GET['lessons'])){
+                $chapter_id = $_GET['lessons'];
+                $i = 1;
+                $getCourse = $conn->prepare("SELECT * FROM `lessons` WHERE ch_id = ?");
+                $getCourse->execute([$chapter_id]);
+                $count = $getCourse->rowCount();
+                if($count > 0){
+                    while($row = $getCourse->fetch(PDO::FETCH_ASSOC)){
+                        echo "
+                        <tr>
+                            <td>".$i++."</td>
+                            <td>".$row['l_name']."</td>
+                            <td>".$row['l_link']."</td>
+                            <td>".$row['l_duration']."</td>
+                            <td>
+                                <a href='inc/editLesson.php?lessonId=".$row['l_id']."' title='Edit'>Edit</a>
+                                <a style='color:red' href='lessons.php?lessons=".$chapter_id."&del_lesson=" . $row['l_id'] . "' title='Delete'>Delete</a>
+                            </td>
+                        </tr>";
                     }
-                   
+                } else {
+                    echo "<tr><td colspan='5'>No lessons for this chapter.</td></tr>";
                 }
-               else{
-                        echo "<script>alert('You havent selected any lesson');</script>";
-                        echo "<script>window.open('../index.php?courses','_self');</script>";
-                   }               
-              
-                ?>
-            </table>
-        </div>
-        <button class="addCbtn"><a href="inc/addLesson.php">+</a></button>
+            } else {
+                echo "<tr><td colspan='5'>No chapter selected.</td></tr>";
+            }
+            ?>
+        </table>
+    </div>
+    <button class="addCbtn"><a href="inc/addLesson.php">+</a></button>
 </div>
 <?php
     if(isset($_GET["del_lesson"])){
         $id = $_GET['del_lesson'];  
-        echo "Lesson ID to delete: " . $id;
-        $del = $conn->prepare("DELETE FROM lessons WHERE l_id=?");
+        $del = $conn->prepare("DELETE FROM lessons WHERE l_id = ?");
         if ($del->execute([$id])) {
-            echo "<script>alert('lesson deleted successfully');</script>";
+            echo "<script>alert('Lesson deleted successfully.');</script>";
         } else {
-            echo "<script>alert('lesson could not be deleted');</script>";
+            echo "<script>alert('Failed to delete lesson.');</script>";
         }
-        echo "<script>window.open('index.php?courses','_self')</script>";
+        echo "<script>window.open('index.php?lessons=".$chapter_id."','_self')</script>";
     }
-    ?>
-<?php } 
-else{
-   echo' <script> alert("No chapters");</script>';
-   header('location:chapters.php');
+?>
+</body>
+</html>
+<?php 
+} else {
+    echo '<script>alert("You are not authorized to view this page.");</script>';
+    header('location: chapters.php');
 }
 ?>
