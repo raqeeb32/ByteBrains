@@ -1,7 +1,7 @@
 <div id="bodyLeft">
     <h3><i class="fa-solid fa-border-all"></i>  Content management</h3>
     <ul>
-        <li><a href=""> Dashboard</a></li>
+        <li><a href="#"> Dashboard</a></li>
         <li><a href="index.php?vcat"> View categories</a></li>
         <li><a href="index.php?sub_cat">  View Sub categories</a></li>
         <li><a href="index.php?lang"> View languages</a></li>
@@ -15,20 +15,19 @@
         <li><a href="index.php?students">Students</a></li>
         <li><a href="index.php?instructors">Teachers</a></li>
     </ul>
-    <!-- <h3><i class="fa-solid fa-money-check"></i>Payment management</h3>
+    <h3><i class="fa-solid fa-money-check"></i>Report</h3>
     <ul>
-        <li><a href="">Pay to teachers</a></li>
-        <li><a href="">Complete payments</a></li>
-        <li><a href="">Search payment</a></li>
-    </ul> -->
+        <li><a href="index.php?sellreport">Sell reports</a></li>
+        <!-- <li><a href="">Complete payments</a></li>
+        <li><a href="">Search payment</a></li> -->
+    </ul>
     <h3><i class="fa-solid fa-note-sticky"></i>Page management</h3>
     <ul>
         <li><a href="index.php?terms">Terms and conditions</a></li>
         <li><a href="index.php?contact">Contact us page</a></li>
         <li><a href="index.php?about">About us page</a></li>
         <li><a href="index.php?faqs">FAQs page</a></li>
-        <li><a href="index.php?feedbacks">feedback page</a></li>
-        <li><a href="">Edit slider</a></li>     
+        <li><a href="index.php?feedbacks">feedback page</a></li>    
     </ul>
     
 </div>
@@ -65,5 +64,8 @@
     }
     if(isset($_GET['feedbacks'])){
         include("feedback.php");
+    }
+    if(isset($_GET['sellreport'])){
+        include("sellreport.php");
     }
 ?>

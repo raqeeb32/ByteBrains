@@ -64,7 +64,7 @@ header span a{
 
 .left{
     width:15%;
-    height:100vh;
+    height:100%;
 padding-top:4rem;
 background-color: #f4f4f4;
 float: left;
@@ -86,7 +86,6 @@ float: left;
     color:white;
     padding-left: 8%;
     transition: 200ms;
-   
 }
 .left ul li i{
     color:rgb(124, 101, 253);
@@ -96,8 +95,8 @@ float: left;
 .right{
     padding-top: 6%;
     width:85%;
-    margin-left: 15%;
-    height: 100vh;
+    margin-left: 17%;
+    height: 100%;
     background-color:white;
     /* background-color: #a1a0a0; */
 }
@@ -205,7 +204,7 @@ input[type="file"] {
 
 .btns {
     margin-top: 20px;
-    text-align: right;
+    text-align: center;
 }
 
 .btns button {
@@ -226,4 +225,28 @@ input[type="file"] {
 .btns button a {
     color: #fff;
     text-decoration: none;
+}
+/* right dashboard */
+.Rcards{
+    margin-top: 1rem;
+    display:grid;
+    height:200px;
+    grid-template-columns: repeat(auto-fit,minmax(250px,250px));
+    column-gap: 10rem;
+    /* background-color: rgb(126, 108, 108); */
+}
+.Rcard{
+    display: flex;
+    /* width:100px; */
+    align-items: center;
+    justify-content: center;
+    height:140px;
+    background-color: rgb(242, 240, 240);
+    border-radius: 10px;
+
+}
+.Rcards a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
 }

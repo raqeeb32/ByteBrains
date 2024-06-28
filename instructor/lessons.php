@@ -4,7 +4,6 @@ if(!isset($_SESSION)){
 }
 if(isset($_SESSION['instlogin'])){
     include_once("inc/db_con.php");
-    // Include CSS here to ensure it's loaded before displaying HTML
 ?>
 <!DOCTYPE html>
 <html lang="en">

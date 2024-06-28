@@ -4,8 +4,8 @@ if(!isset($_SESSION)){
  }
  if(isset($_SESSION['instlogin'])){
     include_once("inc/db_con.php");
-    // include_once("inc/header.php");
-    // include_once("inc/left.php");
+    include_once("inc/header.php");
+    include_once("inc/left.php");
     ?>
     <link rel="stylesheet" href="css/style.css">
 <div class="right">

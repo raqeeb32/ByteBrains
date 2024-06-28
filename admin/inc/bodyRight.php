@@ -1,5 +1,5 @@
 <?php
-if(!isset($_GET['feedbacks']) && !isset($_GET['courses']) && !isset($_GET['instructors']) && !isset($_GET['students']) && !isset($_GET['vcat']) && !isset($_GET['sub_cat']) && !isset($_GET['lang']) && !isset($_GET['terms'])&& !isset($_GET['contact']) && !isset($_GET['faqs'])  && !isset($_GET['about'])){ ?>
+if(!isset($_GET['feedbacks']) && !isset($_GET['sellreport']) && !isset($_GET['courses']) && !isset($_GET['instructors']) && !isset($_GET['students']) && !isset($_GET['vcat']) && !isset($_GET['sub_cat']) && !isset($_GET['lang']) && !isset($_GET['terms'])&& !isset($_GET['contact']) && !isset($_GET['faqs'])  && !isset($_GET['about'])){ ?>
 <style>
      h3{
         background-color:black;

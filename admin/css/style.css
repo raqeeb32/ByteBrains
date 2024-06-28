@@ -113,7 +113,7 @@ a {
 }
 thead{
     height:2.5rem;
-    background-color: var(--primary-color);
+    background-color:black;
     color:white;
 }
 td{
@@ -317,14 +317,11 @@ border-top:none ;
     float: right;
 }
 .cardContainer{
-    margin-left:2%;
-    display: grid;
-    column-gap: 50px;
-    row-gap: 30px;
-    height:150px;
-    border-radius: 10px;
-    grid-template-columns: repeat(auto-fit,minmax(10rem,16rem));
-    justify-content: start;
+    margin-top: 1rem;
+    display:grid;
+    height:200px;
+    grid-template-columns: repeat(auto-fit,minmax(250px,250px));
+    column-gap: 10rem;
     /* color:white; */
 }
 .cardContainer a{
