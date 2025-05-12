@@ -27,7 +27,7 @@
         }
       }
       else{
-      echo'  <button class="h-btn btn"><a href="loginAndSignup.php">Get started</a></button>';
+      echo'  <button class="h-btn btn"><a href="./loginAndSignup.php">Get started</a></button>';
       }
       ?>
 

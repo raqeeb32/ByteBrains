@@ -27,6 +27,8 @@ include_once("inc/db_con.php");
         background-color: blue;
         color: white;
     }
+
+
 </style>
 <div class="bodyRight">
     <h3>Course Sale report</h3>
@@ -59,12 +61,12 @@ if(isset($_POST["submitReport"])) {
         echo '<table>';
         echo'
         <tr>
-        <th>course id</th>
-        <th>course name</th>
-        <th>course price</th>
-        <th>student name</th>
-        <th>staudent email</th>
-        <th>purchse time</th>
+        <th>Course id</th>
+        <th>Course taken</th>
+        <th>Course Price</th>
+        <th>Student name</th>
+        <th>Student email</th>
+        <th>Purchase date</th>
         </tr>
         ';
         foreach ($results as $row) {
@@ -89,7 +91,7 @@ if(isset($_POST["submitReport"])) {
             echo '</tr>';
         }
         echo'<tr><td>
-        <form><input type="submit" value="Print" onclick="window.print()"</form></td>
+        <form><input type="submit"  value="Print" onclick="window.print()"</form></td>
         </tr>';
         echo '</table>';
     } else {

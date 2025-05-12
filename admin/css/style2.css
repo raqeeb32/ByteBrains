@@ -76,13 +76,15 @@
 }
 .btns{
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     justify-content: center;
+
 }
 .btns button{
 width:5rem;
-height: 2rem;
+height: 3rem;
 padding: 2%;
+margin-top: 20px;
 cursor: pointer;
 border:none;
 color: white;

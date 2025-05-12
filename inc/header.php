@@ -1,6 +1,6 @@
 <?php include("inc/function.php");?>
   <header>
-    <a href="#" class="logo">ByteBrains</a>
+    <a href="index.php" class="logo">ByteBrains</a>
 
     <nav>
       <ul class="nav-links">
@@ -30,8 +30,8 @@
     }
     else{
       echo ' <div class="log-sign">
-    <!-- <a href="loginAndSignup/index.html" class="log">Login</a>  -->
-    <a href="loginAndSignup.php"><button class="btn">Signup</button> </a>
+    <a href="admin/adminLogin.php" class="btnl">Go to Admin Page</a>  
+    <a href="loginAndSignup.php"><button class="btn">Login</button> </a>
     </div> ';
     }
     ?>

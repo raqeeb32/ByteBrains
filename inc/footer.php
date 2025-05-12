@@ -33,7 +33,7 @@
    
 </div>
 <div class="copyrightF">
-        <span>Copyright © 2024 ByteBrains| Powered by ThimPress</span>
+        <span>Copyright © 2024 ByteBrains| Powered by Raqeeb</span>
     </div>
     <?php "<script src='js/jquery.min.js'></script>
   <script src='js/ajaxrequest.js'></script>" ?>

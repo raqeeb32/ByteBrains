@@ -1,4 +1,4 @@
 <?php
-   $conn=new PDO("mysql:host=localhost; dbname=SkillyEarndb","root","");
+   $conn=new PDO("mysql:host=localhost; dbname=bytebrainsdb","root","");
 
 ?>
