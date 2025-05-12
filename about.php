@@ -16,10 +16,13 @@
 </head>
     <?php include_once("inc/header.php"); ?>
     <div class="about-banner">
-        <h1 class="about_heading">About us</h1>
+        <h1 class="about_heading"></h1>
     </div>
     <br>
-    <span class="about-content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur, hic ab. Dolorem eos odit dolor itaque temporibus, nostrum porro quae accusamus illum, ab repellat modi, consequuntur aperiam ipsam cum magni! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam consequuntur perferendis omnis aliquid porro ab perspiciatis esse? Aperiam, officia eius, ad blanditiis laudantium, totam facilis vitae nisi veniam inventore deserunt! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio eos, iure, quis ad doloremque repellat, aliquam quaerat ullam magni eius enim quo animi? Atque modi vel corporis ullam facere voluptas.</span>
+    <span class="about-content" style="display: block; text-align: center;">ByteBrainsrepresents a culmination of innovation and dedication towards creating a 
+versatile and accessible e-learning platform. Throughout the development process, the 
+team has navigated challenges and opportunities to craft a robust and user-centric 
+digital space for learners and educators alike</span>
     
     <br><br>
     <?php include_once("inc/footer.php");?>

@@ -17,7 +17,7 @@
     </ul>
     <h3><i class="fa-solid fa-money-check"></i>Report</h3>
     <ul>
-        <li><a href="index.php?sellreport">Sell reports</a></li>
+        <li><a href="index.php?sellreport">Course Sale reports</a></li>
         <!-- <li><a href="">Complete payments</a></li>
         <li><a href="">Search payment</a></li> -->
     </ul>

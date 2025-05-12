@@ -26,7 +26,7 @@
             </div>
             <div class="courseDesc">
                 <div class="aboutCourse">
-                    <p>by Matheen</p>
+                    <p>by Raqeeb</p>
                     <h4>'.$row["course_name"].'</h4>
                 </div>
                 <div class="courseDuration">

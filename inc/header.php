@@ -1,6 +1,6 @@
 <?php include("inc/function.php");?>
   <header>
-    <a href="#" class="logo">SkillyEarn</a>
+    <a href="#" class="logo">ByteBrains</a>
 
     <nav>
       <ul class="nav-links">

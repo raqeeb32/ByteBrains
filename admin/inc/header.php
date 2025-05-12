@@ -3,7 +3,7 @@
 ?>
 <div id="header">
     <div id="logo">
-        <a href="index.php">SkillyEarn</a>
+        <a href="index.php">ByteBrains</a>
     </div>
     <div id="title">
        <h2>Admin Pannel</h2> 

@@ -29,7 +29,7 @@ include_once("inc/db_con.php");
     }
 </style>
 <div class="bodyRight">
-    <h3>Sell report</h3>
+    <h3>Course Sale report</h3>
 <div class="sellreport">
     <form action="#" method="post">
         <div class="dates">
