@@ -55,7 +55,7 @@
 
             <div class="form signup"class="stuRegForm">
                 <div class="form-content"class="stuRegForm">
-                    <header> student Signup</header>
+                    <header> Student Signup</header>
                     <form action="#" method="POST"class="stuRegForm" >
                     
                         <div class="field input-field">
@@ -69,6 +69,9 @@
                        
                         <div class="field input-field">
                             <input type="password" id="stupass" placeholder="Create password" class="password" autocomplete="current-password">
+                        </div>
+                        <div class="field input-field">
+                            <input type="password" id="stupass" placeholder="Confirm password" class="password" autocomplete="current-password">
                         </div>
                         <small id="statusMsq3"></small>
                         <div class="field button-field">

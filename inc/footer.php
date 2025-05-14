@@ -27,7 +27,11 @@
             <li>27/3 Haines Road</li>
             <li>Tel no:9019112599</li>
             <li>Mail:raqeebrabdul32@gmail.com</li>
-            <li><a href="#"></a><img src="images/fb.png" alt="facebook icon"><a href="#"><img src="images/telegram.png" alt="telegram icon"></a><a href="#"><img src="images/insta.png" alt="insta icon"></a><a href="#"><img src="images/yt.png" alt="yt icon"></a></li>
+            <li><a href="https://www.facebook.com/share/16SDN4jLcw/">
+            <img src="images/fb.png" alt="facebook icon"></a>
+            
+            <a href="#"><img src="images/insta.png" alt="insta icon"></a>
+            <a href="#"><img src="images/yt.png" alt="yt icon"></a></li>
         </ul>
     </div>
    

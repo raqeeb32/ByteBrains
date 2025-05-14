@@ -1,5 +1,6 @@
 <section>
-    <h2>Students feedback</h2>
+   
+<h2 style="margin-top:100px;">Students feedback</h2>
     <p>What Students Say About SkillyEarn</p>
     <div class="feeds_container">
         <?php
