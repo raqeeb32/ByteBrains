@@ -131,7 +131,9 @@ main{
     height:100vh;
     /* margin-top:16px; */
     /*background-color: burlywood;*/
-    background-image:url("../images/heroIMG.png");
+    /*background-image:url("../images/heroIMG.png");*/
+    
+    background-color: rgb(220, 220, 255);
     background-size: cover;
     background-repeat: no-repeat;
 
