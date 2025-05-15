@@ -10,8 +10,7 @@
       </div>
       <div class="hero-desc">
         <p>
-          We denounce with righteous indignation and dislike men who are so
-          beguiled and demoralized that cannot trouble.
+          ByteBrains is a modern Learning Management System (LMS) built to empower learners with high-quality online courses. 
         </p>
       </div>
       <?php

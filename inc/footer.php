@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="skillyF">
         <p><a class="logo">ByteBrains</a></p>
-        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+        <span>ByteBrains is a next-gen Learning Management System designed for the future of education. It delivers a seamless learning experience with interactive courses, smart progress tracking, and powerful admin controls. Whether you're scaling employee training or launching an online academy, ByteBrains makes it effortless to teach, learn, and grow—all in one place.</span>
     </div>
     <div class="gethelpF">
         <h3>GET HELP</h3>
@@ -36,7 +36,7 @@
    
 </div>
 <div class="copyrightF">
-        <span>Copyright © 2024 ByteBrains| Powered by Raqeeb</span>
+        <span>Copyright © 2025 ByteBrains| Powered by Raqeeb</span>
     </div>
     <?php "<script src='js/jquery.min.js'></script>
   <script src='js/ajaxrequest.js'></script>" ?>
