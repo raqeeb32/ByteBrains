@@ -19,7 +19,7 @@
         <h1 class="about_heading"></h1>
     </div>
     <br>
-    <span class="about-content" style="display: block; text-align: center;">ByteBrainsrepresents a culmination of innovation and dedication towards creating a 
+    <span class="about-content" style="display: block; text-align: center;">ByteBrains represents a culmination of innovation and dedication towards creating a 
 versatile and accessible e-learning platform. Throughout the development process, the 
 team has navigated challenges and opportunities to craft a robust and user-centric 
 digital space for learners and educators alike</span>

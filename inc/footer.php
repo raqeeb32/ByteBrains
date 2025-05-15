@@ -24,14 +24,13 @@
     <div class="contactF">
     <h3>Contact us</h3>
         <ul class="listF addr">
-            <li>27/3 Haines Road</li>
-            <li>Tel no:9019112599</li>
-            <li>Mail:raqeebrabdul32@gmail.com</li>
+            <li>Haines Road Bangalore 51</li>
+            <li>Tel no: 9019112599</li>
             <li><a href="https://www.facebook.com/share/16SDN4jLcw/">
             <img src="images/fb.png" alt="facebook icon"></a>
-            
-            <a href="#"><img src="images/insta.png" alt="insta icon"></a>
-            <a href="#"><img src="images/yt.png" alt="yt icon"></a></li>
+            <a href="mailto:raqeebrabdul32@gmail.com"><img src="images/gmail.png" style="height:20px; width:20px;" alt="yt icon"></a>
+            <a href="https://www.instagram.com/_abdul_raqeeb_12?igsh=MWE1YzQ4aXY2Z2tiaw== "><img src="images/insta.png" alt="insta icon"></a>
+            <a href="https://youtube.com/@arr1213?feature=shared"><img src="images/yt.png" alt="yt icon"></a></li>
         </ul>
     </div>
    

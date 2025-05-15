@@ -55,7 +55,7 @@
 
             <div class="form signup"class="stuRegForm">
                 <div class="form-content"class="stuRegForm">
-                    <header> Student Signup</header>
+                    <header> student Signup</header>
                     <form action="#" method="POST"class="stuRegForm" >
                     
                         <div class="field input-field">
@@ -70,16 +70,9 @@
                         <div class="field input-field">
                             <input type="password" id="stupass" placeholder="Create password" class="password" autocomplete="current-password">
                         </div>
-                        <!---added--->
-                        <div class="field input-field">
-                              <input type="password" id="stuconfirmpass" placeholder="Confirm password" class="password" autocomplete="off">
-                        </div>
-                        <small id="statusMsq4"></small>
-                        
                         <small id="statusMsq3"></small>
                         <div class="field button-field">
-                            <button type="submit" id="signupbtn">Signup</button>
-
+                            <button onclick="addstu()" id="signupbtn">Signup</button>
                         </div>
                     </form>
 
