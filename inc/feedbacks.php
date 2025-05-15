@@ -1,7 +1,7 @@
 <section>
    
 <h2 style="margin-top:100px;">Students feedback</h2>
-    <p>What Students Say About SkillyEarn</p>
+    <p>What Students Say About <b>ByteBrains</b></p>
     <div class="feeds_container">
         <?php
         include_once("db_con.php");
